@@ -1,0 +1,8 @@
+figure(2)
+title('0.8 pulse in y axis')
+%  legend('real','ssc')
+ legend('real','sl_2','sl_3')
+%  legend('real','ssc','sl_2','sl_3')
+xlabel('time/second')
+% ylabel('distance/meter')
+ylabel('angle/rad')
