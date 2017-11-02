@@ -3,6 +3,7 @@ function [ Path ] = A_Star( Grid )
 % generates a Path to the target as a list of coordinates
 
 [MAX_X, MAX_Y] = size(Grid);
+MAX_VAL = MAX_X * MAX_Y;
 
  for i=1:MAX_X
     for j=1:MAX_Y
@@ -28,8 +29,7 @@ OPEN=[];
 %--------------
 %X val | Y val |
 %--------------
-% CLOSED=zeros(MAX_VAL,2);
-CLOSED=[];
+CLOSED=zeros(MAX_VAL,2);
 
 %Put all obstacles on the Closed list
 k=1;%Dummy counter
@@ -130,7 +130,6 @@ Optimal_path(i,2)=yval;
 i=i+1;
 
 if ( (xval == xTarget) && (yval == yTarget))
-    inode=0;
    %Traverse OPEN and determine the parent nodes
    parent_x=OPEN(node_index(OPEN,xval,yval),4);%node_index returns the index of the node
    parent_y=OPEN(node_index(OPEN,xval,yval),5);
@@ -146,7 +145,7 @@ if ( (xval == xTarget) && (yval == yTarget))
     end;
 
  
- Path = Optimal_path    
+ Path = Optimal_path;    
  
  %% (Optional) PLOT OPTIMAL PATH
  axis([1 MAX_X+1 1 MAX_Y+1])
@@ -157,9 +156,9 @@ hold on;
         if(Grid(i,j) == -1)
             plot(i+.5,j+.5,'ro'); % obstacles 
         elseif (Grid(i,j) == 0)
-             plot(i+.5,j+.5,'gd'); % target
+             plot(i+.5,j+.5,'bd'); % target
         elseif (Grid(i,j) == 1)
-             plot(i+.5,j+.5,'bo'); % current position
+             plot(i+.5,j+.5,'go'); % current position
         end
     end
  end
@@ -173,6 +172,7 @@ hold on;
  drawnow ;
  end;
  plot(Optimal_path(:,1)+.5,Optimal_path(:,2)+.5);
+ 
 else
  pause(1);
  h=msgbox('Sorry, No path exists to the Target!','warn');
