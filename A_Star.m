@@ -162,7 +162,7 @@ if ( (xval == xTarget) && (yval == yTarget))
    end
 
  
- Path = Optimal_path;    
+ Path = reverse_direction(Optimal_path);    
  
  %% (Optional) PLOT OPTIMAL PATH
  axis([1 MAX_X+1 1 MAX_Y+1])
