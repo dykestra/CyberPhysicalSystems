@@ -17,4 +17,9 @@ for i=3:len
 end
 
 waypoints(end+1,:) = path(end,:); % always add end target to waypoints
+
+% optional - plot waypoints
+for i=1:size(waypoints,1)
+    plot(waypoints(i,1)+.5,waypoints(i,2)+.5,'rx','MarkerFaceColor', 'r');
+end
 end
