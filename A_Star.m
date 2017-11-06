@@ -1,6 +1,9 @@
-function [ Path ] = A_Star( Grid )
+function [ Path ] = A_Star( Grid,  plotgrid )
 % Given a 2D matrix Grid with current position, target and obstacles, 
 % generates a Path to the target as a list of coordinates
+if nargin < 2
+    plotgrid = 1;
+end
 
 obstacle_padding = 1;
 
@@ -165,31 +168,32 @@ if ( (xval == xTarget) && (yval == yTarget))
  Path = reverse_direction(Optimal_path);    
  
  %% (Optional) PLOT OPTIMAL PATH
- axis([1 MAX_X+1 1 MAX_Y+1])
- grid on;
-hold on;
- for i=1:MAX_X
-    for j=1:MAX_Y
-        if(grid_copy(i,j) == -1)
-            plot(i+.5,j+.5,'ro','MarkerFaceColor', 'r'); % obstacles 
-        elseif (Grid(i,j) == 0)
-             plot(i+.5,j+.5,'bd', 'MarkerFaceColor', 'b'); % target
-        elseif (Grid(i,j) == 1)
-             plot(i+.5,j+.5,'go', 'MarkerFaceColor', 'g'); % current position
+if plotgrid
+    axis([1 MAX_X+1 1 MAX_Y+1])
+    grid on;
+    hold on;
+     for i=1:MAX_X
+        for j=1:MAX_Y
+            if(grid_copy(i,j) == -1)
+                plot(i+.5,j+.5,'ro','MarkerFaceColor', 'r'); % obstacles 
+            elseif (Grid(i,j) == 0)
+                 plot(i+.5,j+.5,'bd', 'MarkerFaceColor', 'b'); % target
+            elseif (Grid(i,j) == 1)
+                 plot(i+.5,j+.5,'go', 'MarkerFaceColor', 'g'); % current position
+            end
         end
-    end
- end
+     end
 
- j=size(Optimal_path,1);
- p=plot(Optimal_path(j,1)+.5,Optimal_path(j,2)+.5,'bo');
- j=j-1;
- for i=j:-1:1
-  pause(.25);
-  set(p,'XData',Optimal_path(i,1)+.5,'YData',Optimal_path(i,2)+.5);
- drawnow ;
- end
- plot(Optimal_path(:,1)+.5,Optimal_path(:,2)+.5);
- 
+     j=size(Optimal_path,1);
+     p=plot(Optimal_path(j,1)+.5,Optimal_path(j,2)+.5,'bo');
+     j=j-1;
+     for i=j:-1:1
+      pause(.25);
+      set(p,'XData',Optimal_path(i,1)+.5,'YData',Optimal_path(i,2)+.5);
+     drawnow ;
+     end
+     plot(Optimal_path(:,1)+.5,Optimal_path(:,2)+.5);
+end
 else
  pause(1);
  h=msgbox('Sorry, No path exists to the Target!','warn');

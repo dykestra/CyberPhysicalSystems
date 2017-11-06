@@ -1,5 +1,9 @@
-function waypoints = path_to_waypoints(path)
+function waypoints = path_to_waypoints(path, plotgrid)
 % Takes a list of coordinates and returning a shorter list of waypoints
+
+if nargin < 2
+    plotgrid = 1;
+end
 
 len = size(path,1);
 waypoints = []; %size of waypoints unknown until completion
@@ -19,7 +23,9 @@ end
 waypoints(end+1,:) = path(end,:); % always add end target to waypoints
 
 % optional - plot waypoints
-for i=1:size(waypoints,1)
-    plot(waypoints(i,1)+.5,waypoints(i,2)+.5,'rx','MarkerFaceColor', 'r');
+if plotgrid
+    for i=1:size(waypoints,1)
+        plot(waypoints(i,1)+.5,waypoints(i,2)+.5,'rx','MarkerFaceColor', 'r');
+    end
 end
 end
