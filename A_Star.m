@@ -2,6 +2,8 @@ function [ Path ] = A_Star( Grid )
 % Given a 2D matrix Grid with current position, target and obstacles, 
 % generates a Path to the target as a list of coordinates
 
+obstacle_padding = 1;
+
 [MAX_X, MAX_Y] = size(Grid);
 MAX_VAL = MAX_X * MAX_Y;
 
@@ -13,6 +15,21 @@ MAX_VAL = MAX_X * MAX_Y;
         elseif (Grid(i,j) == 1)
              xStart = i; % current position
              yStart = j;
+        end
+    end
+ end
+
+%% Obstacle padding - treat points adjacent to obstacles as obstacles
+grid_copy = Grid;
+
+if obstacle_padding
+    for i=2:49
+        for j=2:49
+            if grid_copy(i,j)==-1
+                Grid(i-1,j-1)=-1; Grid(i-1,j)=-1; Grid(i-1,j+1)=-1;
+                Grid(i,j-1)=-1;                   Grid(i,j+1)=-1;
+                Grid(i+1,j-1)=-1; Grid(i+1,j)=-1; Grid(i+1,j+1)=-1;
+            end
         end
     end
 end
@@ -83,17 +100,17 @@ while((xNode ~= xTarget || yNode ~= yTarget) && NoPath == 1)
                 OPEN(j,5)=yNode;
                 OPEN(j,6)=exp_array(i,3);
                 OPEN(j,7)=exp_array(i,4);
-            end;%End of minimum fn check
+            end%End of minimum fn check
             flag=1;
-        end;%End of node check
+        end%End of node check
 %         if flag == 1
 %             break;
-    end;%End of j for
+    end%End of j for
     if flag == 0
         OPEN_COUNT = OPEN_COUNT+1;
         OPEN(OPEN_COUNT,:)=insert_open(exp_array(i,1),exp_array(i,2),xNode,yNode,exp_array(i,3),exp_array(i,4),exp_array(i,5));
-     end;%End of insert new element into the OPEN list
- end;%End of i for
+    end%End of insert new element into the OPEN list
+ end%End of i for
  
  %Find out the node with the smallest fn 
   index_min_node = min_fn(OPEN,OPEN_COUNT,xTarget,yTarget);
@@ -110,8 +127,8 @@ while((xNode ~= xTarget || yNode ~= yTarget) && NoPath == 1)
   else
       %No path exists to the Target!!
       NoPath=0;%Exits the loop!
-  end;%End of index_min_node check
-end;%End of While Loop
+  end%End of index_min_node check
+end%End of While Loop
 
 
 %% GENERATE PATH
@@ -142,7 +159,7 @@ if ( (xval == xTarget) && (yval == yTarget))
            parent_x=OPEN(inode,4);%node_index returns the index of the node
            parent_y=OPEN(inode,5);
            i=i+1;
-    end;
+   end
 
  
  Path = Optimal_path;    
@@ -153,12 +170,12 @@ if ( (xval == xTarget) && (yval == yTarget))
 hold on;
  for i=1:MAX_X
     for j=1:MAX_Y
-        if(Grid(i,j) == -1)
-            plot(i+.5,j+.5,'ro'); % obstacles 
+        if(grid_copy(i,j) == -1)
+            plot(i+.5,j+.5,'ro','MarkerFaceColor', 'r'); % obstacles 
         elseif (Grid(i,j) == 0)
-             plot(i+.5,j+.5,'bd'); % target
+             plot(i+.5,j+.5,'bd', 'MarkerFaceColor', 'b'); % target
         elseif (Grid(i,j) == 1)
-             plot(i+.5,j+.5,'go'); % current position
+             plot(i+.5,j+.5,'go', 'MarkerFaceColor', 'g'); % current position
         end
     end
  end
@@ -170,7 +187,7 @@ hold on;
   pause(.25);
   set(p,'XData',Optimal_path(i,1)+.5,'YData',Optimal_path(i,2)+.5);
  drawnow ;
- end;
+ end
  plot(Optimal_path(:,1)+.5,Optimal_path(:,2)+.5);
  
 else
