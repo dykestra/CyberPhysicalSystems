@@ -23,3 +23,5 @@ TyCoulomb = 1.8;
 % TzVisc = 92.5; % considering the mass added
 TzVisc = 342; %Z friciton without contant frictional force added by the
 % mass
+
+WP_Index = 1;
