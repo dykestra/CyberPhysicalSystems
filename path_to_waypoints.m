@@ -1,5 +1,5 @@
 function waypoints = path_to_waypoints(path, plotgrid)
-% Takes a list of coordinates and returning a shorter list of waypoints
+% Takes a list of coordinates and returns a shorter list of waypoints
 
 if nargin < 2
     plotgrid = 1;

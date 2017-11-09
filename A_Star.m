@@ -1,11 +1,12 @@
-function [ Path ] = A_Star( Grid,  plotgrid )
+function [ Path ] = A_Star( Grid,  plotgrid, obstacle_padding )
 % Given a 2D matrix Grid with current position, target and obstacles, 
 % generates a Path to the target as a list of coordinates
+if nargin < 3
+    obstacle_padding = 1;
+end
 if nargin < 2
     plotgrid = 1;
 end
-
-obstacle_padding = 1;
 
 [MAX_X, MAX_Y] = size(Grid);
 MAX_VAL = MAX_X * MAX_Y;
@@ -26,8 +27,8 @@ MAX_VAL = MAX_X * MAX_Y;
 grid_copy = Grid;
 
 if obstacle_padding
-    for i=2:49
-        for j=2:49
+    for i=2:MAX_X-1
+        for j=2:MAX_Y-1
             if grid_copy(i,j)==-1
                 Grid(i-1,j-1)=-1; Grid(i-1,j)=-1; Grid(i-1,j+1)=-1;
                 Grid(i,j-1)=-1;                   Grid(i,j+1)=-1;
