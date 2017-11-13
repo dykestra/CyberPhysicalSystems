@@ -1,3 +1,6 @@
 *.asv
 slprj/*
 *.mexa64
+*.fig
+Output_Fig/Cart Analysis.jpg
+Output_Fig/XY Space.jpg
