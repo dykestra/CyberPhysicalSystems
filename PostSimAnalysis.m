@@ -1,4 +1,4 @@
-function [ ] = PostSimAnalysis( MAP, waypoints, TrajX, TrajY )
+function [ ] = PostSimAnalysis( MAP, waypoints, TrajX, TrajY, CartX, CartY, CartdX, CartdY, AngleX, AngleY, AngledX, AngledY, xRange, yRange )
 
 %% Na magic function to plot
 MAX_X = 50;
@@ -6,6 +6,8 @@ MAX_Y = 50;
 axis([0 MAX_X+1 0 MAX_Y+1])
 grid on;
 hold on;
+
+figure(1)
 for i=1:MAX_X
     for j=1:MAX_Y
         if(MAP(i,j) == -1)
@@ -32,6 +34,35 @@ plot(waypoints(:,1),waypoints(:,2));
 TrajX(:,2) = 100*TrajX(:,2);
 TrajY(:,2) = 100*TrajY(:,2);
 plot(TrajX(:,2),TrajY(:,2));
+title('Cart movement in x-y space')
+xlim([0 50])
+ylim([0 50])
+xlabel('x');
+ylabel('y');
+
+%% Further Analyses - Jukka
+figure(2)
+subplot(2,2,1)
+plot(CartX(:,1),CartX(:,2));
+%line([cartX(1,1) cartX(end,1)],[x_in x_in],'LineWidth',1) % Wanted value
+line([CartX(1,1) CartX(end,1)],[xRange(2) xRange(2)],'LineWidth',1) % Upper limit
+title('Cart x values over time')
+xlabel('Time');
+
+subplot(2,2,2)
+plot(CartY(:,1),CartY(:,2));
+title('Cart y values over time')
+xlabel('Time');
+
+subplot(2,2,3)
+plot(CartdX(:,1),CartdX(:,2));
+title('dx values over time')
+xlabel('Time');
+
+subplot(2,2,4)
+plot(CartdY(:,1),CartdY(:,2));
+title('dy values over time')
+xlabel('Time');
 
 end
 

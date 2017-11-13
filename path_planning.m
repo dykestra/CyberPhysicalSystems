@@ -45,4 +45,7 @@ for r=1:n_targets
    
 end
 
+targets(:) = targets(:)-1;
+waypoints(:) = waypoints(:)-1;
+
 end
