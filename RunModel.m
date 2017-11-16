@@ -1,6 +1,6 @@
 %% Load Variables and perform Path Planning
 run('setup.m');
-load('5050Grid.mat')
+MAP = txt2Map('InputScenarios/test_coord.txt');
 [targets,waypoints] = path_planning(MAP);
 
 %% Define PIDs parameters for model
