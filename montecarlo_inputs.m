@@ -58,10 +58,10 @@ rng(0,'twister'); % initialise random number generator with a seed
 
 COURSES = 10; % NUMBER OF COURSES TO CREATE
 for i=1:COURSES
-   filename = 'course_files/scenario';
+   filename = 'MontecarloScenarios/Input/scenario';
    scen_num = int2str(i);
    filename = strcat(filename,scen_num);
-   filename = strcat(filename,'.txt');
+   filename = strcat(filename,'.csv');
    generate_obstacle_course(filename,min_targets,max_targets,min_obstacles,max_obstacles);
 end
 

@@ -1,6 +1,4 @@
-clear variables
-close all
-clc
+
 %% SimscapeCrane_MPC_start;
 load('Params_Simscape.mat');
 load('SSmodelParams.mat');
