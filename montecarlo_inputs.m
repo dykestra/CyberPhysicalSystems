@@ -2,10 +2,6 @@
 % Monte Carlo generation of input files ("mazes") in .txt format
 % ===================================================================
 
-% PROBLEMS WITH THE "AGREED" SPEC:
-% - .txt file's data format not specified properly
-% - POTENTIAL: nothing to stop one from encircling targets with obstacles
-
 % ASSUMPTIONS:
 % Cohort agreement:
 % - coordinates: x, y are integers, with x, y \in [3, 47]
@@ -29,13 +25,6 @@
 % therefore not represent points with either x or y index 0, this is not
 % an issue here as these regions are outside the allowed area.
 
-
-% The format has not been specified properly! Here we assume that it
-% follows a comma-separated format with three columns:
-%       x,y,type
-% where "x" and "y" are coordinates, and "type" is "t" or "o", for target
-
-
 % PARAMETERS to guide creation:
 %    - min distance between targets and obstacles:  min_dist_ot
 %      - DEFAULT: 0
@@ -58,14 +47,21 @@ rng(0,'twister'); % initialise random number generator with a seed
 
 COURSES = 10; % NUMBER OF COURSES TO CREATE
 for i=1:COURSES
-   filename = 'MontecarloScenarios/Input/scenario';
-   scen_num = int2str(i);
-   filename = strcat(filename,scen_num);
-   filename = strcat(filename,'.csv');
-   generate_obstacle_course(filename,min_targets,max_targets,min_obstacles,max_obstacles);
+    % Setup a filename for the scenario
+    filename = 'MontecarloScenarios/Input/scenario';
+    scen_num = int2str(i);
+    filename = strcat(filename,scen_num);
+    filename = strcat(filename,'.csv');
+    
+    % Generate an obstacle course
+    generate_obstacle_course(filename,min_targets,max_targets,min_obstacles,max_obstacles);
 end
 
 
+
+% -------------------------------------------
+% Helper functions
+%-------------------------------------------
 
 % Function for generating an obstacle course
 function [] = generate_obstacle_course(filename,min_targets,max_targets,min_obstacles,max_obstacles)
@@ -105,6 +101,7 @@ function [] = grid_to_file(grid_in,filename)
     end
 end
 
+
 % Function to pick a position for an object (target/obstacle)
 function grid_out = pick_position(grid_in,type_in)
     if type_in == 't'
@@ -128,6 +125,7 @@ function grid_out = pick_position(grid_in,type_in)
         grid_out = pick_position(grid_in,type_in);
     end
 end
+
 
 % Function to check if an area is clear
 function isclear = area_clear(grid_in,x_in,y_in)
