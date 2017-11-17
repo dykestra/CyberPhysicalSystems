@@ -1,4 +1,4 @@
-function RunModel(InputFile,OutputPath)
+function RunModel(InputFile,OutputPath, Model)
 % Suppress warnings relating to inputs and outputs not connected
 warning('off','Simulink:Engine:InputNotConnected');
 warning('off','Simulink:Engine:OutputNotConnected');
@@ -9,9 +9,9 @@ MAP = txt2Map(InputFile);
 [targets,waypoints] = path_planning(MAP);
 
 %% Define PIDs parameters for model
-PTraj = 2.0;
+PTraj = 3.0;
 ITraj = 0.3;
-DTraj = 0.1;
+DTraj = 0.3;
 
 POsc = 0.9;
 IOsc = 0;
@@ -19,7 +19,7 @@ DOsc = 0.01;
 
 %% Run Model
 options = simset('SrcWorkspace','current');
-sim('Simscape_crane_software_model_RealSensors_R2016b',[],options)
+sim(Model,[],options)
 PostSimAnalysis(OutputPath, MAP, waypoints, TrajX, TrajY, CartX, CartY, CartdX, CartdY, AngleX, AngleY, AngledX, AngledY, xRange, yRange, DesiredX, DesiredY);
 
 %% Save all information as csv and print figures
