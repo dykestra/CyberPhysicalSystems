@@ -7,7 +7,7 @@ function [targets, waypoints] = path_planning( Grid )
 targets = [targ_cols, targ_rows];
 n_targets = size(targets,1);
 
-waypoints = [0,0];
+waypoints = [1,1];
 
 remaining_targets = targets;
 

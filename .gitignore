@@ -4,3 +4,5 @@ slprj/*
 *.fig
 Output_Fig/Cart Analysis.jpg
 Output_Fig/XY Space.jpg
+*.jpg
+MontecarloScenarios/Input/*.csv
