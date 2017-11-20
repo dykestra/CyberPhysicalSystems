@@ -45,7 +45,28 @@ for r=1:n_targets
    
 end
 
+waypoints = [waypoints, find_nearest_obstacles(waypoints, Grid)];
+
 targets(:) = targets(:)-1;
 waypoints(:) = waypoints(:)-1;
+
+end
+
+function nearest_obstacles = find_nearest_obstacles( waypoints, Grid )
+
+nearest_obstacles = zeros(size(waypoints));
+[obs_cols, obs_rows] = find(Grid==-1);
+obstacles = [obs_cols, obs_rows];
+
+for i=1:size(waypoints,1)
+    min_dist = intmax;
+    for j=1:size(obstacles,1)
+        d = distance(obstacles(j,1),obstacles(j,2),waypoints(i,1),waypoints(i,2));
+        if d < min_dist
+            nearest_obstacles(i,:) = obstacles(j,:);
+            min_dist = d;
+        end
+    end
+end
 
 end
