@@ -1,4 +1,4 @@
-function exp_array=expand_array(node_x,node_y,hn,xTarget,yTarget,CLOSED,MAX_X,MAX_Y)
+function exp_array=expand_array(node_x,node_y,hn,xTarget,yTarget,CLOSED,MAX_X,MAX_Y,heat_map)
     %Function to return an expanded array
     %This function takes a node and returns the expanded list
     %of successors,with the calculated fn values.
@@ -24,7 +24,7 @@ function exp_array=expand_array(node_x,node_y,hn,xTarget,yTarget,CLOSED,MAX_X,MA
                     if (flag == 1)
                         exp_array(exp_count,1) = s_x;
                         exp_array(exp_count,2) = s_y;
-                        exp_array(exp_count,3) = hn+distance(node_x,node_y,s_x,s_y);%cost of travelling to node
+                        exp_array(exp_count,3) = heat_map(s_x,s_y)+hn+distance(node_x,node_y,s_x,s_y);%cost of travelling to node
                         exp_array(exp_count,4) = distance(xTarget,yTarget,s_x,s_y);%distance between node and goal
                         exp_array(exp_count,5) = exp_array(exp_count,3)+exp_array(exp_count,4);%fn
                         exp_count=exp_count+1;
