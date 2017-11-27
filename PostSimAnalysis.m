@@ -19,10 +19,10 @@ fig = figure(1);
 %set(fig, 'Visible', 'off'); %suppress displaying the figure
 for i=1:MAX_X
     for j=1:MAX_Y
-        if(MAP(i,j) == -1)
-            plot(i-1,j-1,'ro','MarkerFaceColor', 'r'); % obstacles 
-        elseif (MAP(i,j) == 0)
-             plot(i-1,j-1,'bd', 'MarkerFaceColor', 'b'); % target
+        if(MAP(i,j) == -1) % obstacles
+            rectangle('Position',[i-2,j-2,2,2],'FaceColor','r','EdgeColor','r')
+        elseif (MAP(i,j) == 0) % targets
+            rectangle('Position',[i-2,j-2,2,2],'EdgeColor','b')
         elseif (MAP(i,j) == 1)
              plot(i-1,j-1,'go', 'MarkerFaceColor', 'g'); % current position
         end
