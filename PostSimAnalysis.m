@@ -43,7 +43,7 @@ plot(waypoints(:,1),waypoints(:,2));
 TrajX(:,2) = 100*TrajX(:,2);
 TrajY(:,2) = 100*TrajY(:,2);
 plot(TrajX(:,2),TrajY(:,2));
-title('Cart movement in x-y space')
+title('Payload movement in x-y space')
 xlim([0 50])
 ylim([0 50])
 xlabel('x');
