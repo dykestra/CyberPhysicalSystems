@@ -40,8 +40,12 @@ for r=1:n_targets
     Grid(visited_target(1), visited_target(2)) = 1;
     
     % remove visited target from remaining_targets
-    ind = remaining_targets~=visited_target;
-    remaining_targets( ~any(ind,2), : ) = [];
+    for o=1:size(remaining_targets,1)
+        if visited_target == remaining_targets(o,:)
+            remaining_targets(o,:) = [];
+            break
+        end
+    end
    
 end
 

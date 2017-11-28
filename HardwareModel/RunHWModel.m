@@ -1,7 +1,9 @@
-function RunHWModel(InputFile,OutputPath, Model)
 % Suppress warnings relating to inputs and outputs not connected
 warning('off','Simulink:Engine:InputNotConnected');
 warning('off','Simulink:Engine:OutputNotConnected');
+
+InputFile = 'SingleScenarios/Input/scenario1.csv';
+OutputFile = 'SingleScenarios/Output';
 
 %% Function done by other group required for scoring
 [obstacles_csv, targets_csv] = getCourseFromCSV(InputFile);
@@ -16,9 +18,9 @@ MAP = txt2Map(InputFile);
 ElapsedTimePP = toc;
 
 %% Define PIDs parameters for model
-PTraj = 3.0;
-ITraj = 0.3;
-DTraj = 0.3;
+P = 3.0;
+I = 0.3;
+D = 0.3;
 
 POsc = 0.9;
 IOsc = 0;
@@ -26,8 +28,14 @@ DOsc = 0.01;
 
 %% Run Model
 Crane3D_DevDriv;
-set_param('Crane3D_DevDriv','StopTime',120);
-set_param('Crane3D_DevDriv','SimulationCommand','Update');
+set_param('Crane3D_DevDriv','StopTime','120');
+set_param('Crane3D_DevDriv/Constant','Value','waypoints');
+% set_param('Crane3D_DevDriv/Controller/PID Controler/PID Controller','P','PTraj','I','ITraj','D','DTraj');
+% set_param('Crane3D_DevDriv/Controller/PID Controler/PID Controller2','P','PTraj','I','ITraj','D','DTraj');
+% set_param('Crane3D_DevDriv/Controller/xRange','VariableName','XRange');
+% set_param('Crane3D_DevDriv/Controller/yRange','VariableName','YRange');
+% set_param('Crane3D_DevDriv','SimulationCommand','update');
+% set_param('Crane3D_DevDriv','SimulationCommand','WriteDataLogs');
 set_param('Crane3D_DevDriv','SimulationCommand','start');
 
 %% Score run & Post simulation analysis
