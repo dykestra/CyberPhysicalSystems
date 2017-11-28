@@ -6,7 +6,7 @@ clc
 montecarlo_inputs;
 clear variables 
 
-ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
+ModelName = 'Crane3D_DevDriv';
 
 %% Loop around all files
 files = dir('MontecarloScenarios/Input/*.csv');
@@ -14,7 +14,7 @@ for file = files'
     InputPath = strcat(string(file.folder) + '/' + string(file.name));
     Split = strsplit(string(file.name), '.');
     OutputPath = strcat('MontecarloScenarios/Output/' + Split(1));
-    RunModel(InputPath, OutputPath, ModelName)
+    RunHWModel(InputPath, OutputPath, ModelName)
     
     % Switch off the Mechanics editor opening for later scenarios
     % - so the first scenario will be opened as usual, while others not, as
