@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.149
+ * Model version              : 1.179
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Nov 28 17:39:48 2017
+ * C source code generated on : Thu Nov 30 11:37:48 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping

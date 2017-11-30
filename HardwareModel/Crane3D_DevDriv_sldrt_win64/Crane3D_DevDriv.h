@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.149
+ * Model version              : 1.179
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Tue Nov 28 17:39:48 2017
+ * C source code generated on : Thu Nov 30 11:37:48 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -813,6 +813,7 @@
 
 /* Block signals (auto storage) */
 typedef struct {
+  real_T Clock;                        /* '<Root>/Clock' */
   real_T Encoder[5];                   /* '<S3>/Encoder' */
   real_T XScale;                       /* '<S3>/X Scale' */
   real_T YScale;                       /* '<S3>/Y Scale' */
@@ -841,11 +842,35 @@ typedef struct {
   real_T ResetSwitchFlagSource[3];     /* '<S3>/ResetSwitchFlagSource' */
   real_T ThermFlag[3];                 /* '<S3>/ThermFlag ' */
   real_T ThermFlagSource[3];           /* '<S3>/ThermFlagSource' */
-  real_T Clock;                        /* '<Root>/Clock' */
+  real_T x;                            /* '<Root>/Select most convenient path' */
+  real_T y;                            /* '<Root>/Select most convenient path' */
+  real_T x_l;                          /* '<Root>/Convert Coordinates' */
+  real_T y_f;                          /* '<Root>/Convert Coordinates' */
 } B_Crane3D_DevDriv_T;
 
 /* Block states (auto storage) for system '<Root>' */
 typedef struct {
+  real_T WP_Index;                     /* '<Root>/Select most convenient path' */
+  struct {
+    void *LoggedData;
+  } ToWorkspace4_PWORK;                /* '<Root>/To Workspace4' */
+
+  struct {
+    void *LoggedData;
+  } XDes_PWORK;                        /* '<Root>/XDes' */
+
+  struct {
+    void *LoggedData;
+  } XTraj_PWORK;                       /* '<Root>/XTraj' */
+
+  struct {
+    void *LoggedData;
+  } YDes_PWORK;                        /* '<Root>/YDes' */
+
+  struct {
+    void *LoggedData;
+  } YTraj_PWORK;                       /* '<Root>/YTraj' */
+
   struct {
     void *LoggedData;
   } anglex_PWORK;                      /* '<Root>/anglex' */
@@ -861,10 +886,6 @@ typedef struct {
   struct {
     void *LoggedData;
   } ypos_PWORK;                        /* '<Root>/ypos' */
-
-  struct {
-    void *LoggedData;
-  } ToWorkspace4_PWORK;                /* '<Root>/To Workspace4' */
 } DW_Crane3D_DevDriv_T;
 
 /* Continuous states (auto storage) */
@@ -902,11 +923,6 @@ typedef struct {
 
 #endif
 
-/* External outputs (root outports fed by signals with auto storage) */
-typedef struct {
-  real_T output[2];                    /* '<Root>/output' */
-} ExtY_Crane3D_DevDriv_T;
-
 /* Backward compatible GRT Identifiers */
 #define rtB                            Crane3D_DevDriv_B
 #define BlockIO                        B_Crane3D_DevDriv_T
@@ -916,8 +932,6 @@ typedef struct {
 #define StateDerivatives               XDot_Crane3D_DevDriv_T
 #define tXdis                          Crane3D_DevDriv_XDis
 #define StateDisabled                  XDis_Crane3D_DevDriv_T
-#define rtY                            Crane3D_DevDriv_Y
-#define ExternalOutputs                ExtY_Crane3D_DevDriv_T
 #define rtP                            Crane3D_DevDriv_P
 #define Parameters                     P_Crane3D_DevDriv_T
 #define rtDWork                        Crane3D_DevDriv_DW
@@ -925,20 +939,26 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct P_Crane3D_DevDriv_T_ {
-  real_T waypoints[108];               /* Variable: waypoints
-                                        * Referenced by: '<Root>/Constant'
-                                        */
-  real_T PIDController_D;              /* Mask Parameter: PIDController_D
+  real_T Dx;                           /* Variable: Dx
                                         * Referenced by: '<S6>/Derivative Gain'
                                         */
-  real_T PIDController2_D;             /* Mask Parameter: PIDController2_D
+  real_T Dy;                           /* Variable: Dy
                                         * Referenced by: '<S7>/Derivative Gain'
                                         */
-  real_T PIDController_I;              /* Mask Parameter: PIDController_I
+  real_T Ix;                           /* Variable: Ix
                                         * Referenced by: '<S6>/Integral Gain'
                                         */
-  real_T PIDController2_I;             /* Mask Parameter: PIDController2_I
+  real_T Iy;                           /* Variable: Iy
                                         * Referenced by: '<S7>/Integral Gain'
+                                        */
+  real_T Px;                           /* Variable: Px
+                                        * Referenced by: '<S6>/Proportional Gain'
+                                        */
+  real_T Py;                           /* Variable: Py
+                                        * Referenced by: '<S7>/Proportional Gain'
+                                        */
+  real_T waypoints[36];                /* Variable: waypoints
+                                        * Referenced by: '<Root>/Constant'
                                         */
   real_T PIDController_LowerSaturationLimit;/* Mask Parameter: PIDController_LowerSaturationLimit
                                              * Referenced by: '<S6>/Saturate'
@@ -951,12 +971,6 @@ struct P_Crane3D_DevDriv_T_ {
                                         */
   real_T PIDController2_N;             /* Mask Parameter: PIDController2_N
                                         * Referenced by: '<S7>/Filter Coefficient'
-                                        */
-  real_T PIDController_P;              /* Mask Parameter: PIDController_P
-                                        * Referenced by: '<S6>/Proportional Gain'
-                                        */
-  real_T PIDController2_P;             /* Mask Parameter: PIDController2_P
-                                        * Referenced by: '<S7>/Proportional Gain'
                                         */
   real_T PIDController_UpperSaturationLimit;/* Mask Parameter: PIDController_UpperSaturationLimit
                                              * Referenced by: '<S6>/Saturate'
@@ -1361,9 +1375,6 @@ extern X_Crane3D_DevDriv_T Crane3D_DevDriv_X;
 
 /* Block states (auto storage) */
 extern DW_Crane3D_DevDriv_T Crane3D_DevDriv_DW;
-
-/* External outputs (root outports fed by signals with auto storage) */
-extern ExtY_Crane3D_DevDriv_T Crane3D_DevDriv_Y;
 
 /* Model entry point functions */
 extern void Crane3D_DevDriv_initialize(void);

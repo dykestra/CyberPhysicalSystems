@@ -2,44 +2,55 @@
 warning('off','Simulink:Engine:InputNotConnected');
 warning('off','Simulink:Engine:OutputNotConnected');
 
-InputFile = 'SingleScenarios/Input/scenario1.csv';
-OutputFile = 'SingleScenarios/Output';
+close all
+clear all
+
+InputFile = 'MontecarloScenarios/Input/scenario2.csv';
+OutputPath = 'SingleScenarios/Output';
 
 %% Function done by other group required for scoring
 [obstacles_csv, targets_csv] = getCourseFromCSV(InputFile);
 
 %% Load Variables and perform Path Planning
 tic;
-
 run('setup.m');
 MAP = txt2Map(InputFile);
 [targets,waypoints] = path_planning(MAP);
-
-ElapsedTimePP = toc;
+ElapsedTime = toc
 
 %% Define PIDs parameters for model
-P = 3.0;
-I = 0.3;
-D = 0.3;
+Px = 3.0;
+Ix = 0.3;
+Dx = 0.3;
 
-POsc = 0.9;
-IOsc = 0;
-DOsc = 0.01;
+Py = 3.0;
+Iy = 0.3;
+Dy = 0.3;
 
 %% Run Model
 Crane3D_DevDriv;
 set_param('Crane3D_DevDriv','StopTime','120');
 set_param('Crane3D_DevDriv/Constant','Value','waypoints');
-% set_param('Crane3D_DevDriv/Controller/PID Controler/PID Controller','P','PTraj','I','ITraj','D','DTraj');
-% set_param('Crane3D_DevDriv/Controller/PID Controler/PID Controller2','P','PTraj','I','ITraj','D','DTraj');
-% set_param('Crane3D_DevDriv/Controller/xRange','VariableName','XRange');
-% set_param('Crane3D_DevDriv/Controller/yRange','VariableName','YRange');
-% set_param('Crane3D_DevDriv','SimulationCommand','update');
-% set_param('Crane3D_DevDriv','SimulationCommand','WriteDataLogs');
+set_param('Crane3D_DevDriv','SimulationCommand','update');
+set_param('Crane3D_DevDriv','SimulationCommand','WriteDataLogs');
 set_param('Crane3D_DevDriv','SimulationCommand','start');
 
+pause(130)
+
 %% Score run & Post simulation analysis
-% score = getScore(simout, obstacles_csv, targets_csv)
+simout.Time = xpos.time;
+simout.CartX = [xpos.time xpos.signals.values];
+simout.CartY = [ypos.time ypos.signals.values];
+simout.TrajX = [XTraj.time XTraj.signals.values];
+simout.TrajY = [YTraj.time YTraj.signals.values];
+simout.AngleX = [anglex.time anglex.signals.values];
+simout.AngleY = [angley.time angley.signals.values];
+simout.DesX = [XDes.time XDes.signals.values];
+simout.DesY = [XDes.time YDes.signals.values];
+score = getScore(simout, obstacles_csv, targets_csv, ElapsedTime)
+
+pause(.25)
+
 % TrajX = simout.get('TrajX');
 % TrajY = simout.get('TrajY');
 % CartX = simout.get('CartX');
@@ -51,7 +62,7 @@ set_param('Crane3D_DevDriv','SimulationCommand','start');
 % AngledX = simout.get('AngledX');
 % AngledY = simout.get('AngledY');
 % 
-% PostSimAnalysis(OutputPath, MAP, waypoints, TrajX, TrajY, CartX, CartY, CartdX, CartdY, AngleX, AngleY, AngledX, AngledY, simout.get('xRange'), simout.get('yRange'), simout.get('DesiredX'), simout.get('DesiredY'));
+PostSimAnalysis(OutputPath, MAP, waypoints, simout.TrajX, simout.TrajY, simout.CartX, simout.CartY, simout.AngleX, simout.AngleY, simout.DesX, simout.DesY);
 % 
 % %% Save all information as csv and print figures
 % csvwrite('Results.csv', [TrajX, TrajY(:,2), CartX(:,2), CartY(:,2), CartdX(:,2), CartdY(:,2), AngleX(:,2), AngleY(:,2), AngledX(:,2), AngledY(:,2)]);

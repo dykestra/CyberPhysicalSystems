@@ -1,42 +1,40 @@
 %% Calculate Score based on targets, obstacles, and time
-function score = getScore( simout, obstacles, targets)
+function score = getScore( simout, obstacles, targets, add_time)
     %% Some parameters
     delta = 0.01; % Size of targets and obstacles
     lstring = 0.3;     % Length of pendulum string
-    %% Get trajectory from simulink data
-    j = 0;
-    for i = 1:size(simout.get('yout').signals,2)
-        if endsWith(simout.get('yout').signals(i).blockName, '/output')
-            j = i;
-        end
-    end
-    if j == 0
-        printf('No output signal named "output" specified')
-    end
-    
-    timeV = simout.get('yout').time;
-    cartX = simout.get('yout').signals(j).values(:,1);
-    cartY = simout.get('yout').signals(j).values(:,3);
-    alphaX = simout.get('yout').signals(j).values(:,5);
-    alphaY = simout.get('yout').signals(j).values(:,7);
-    
-    %% Calculate payload trajectory
-    
-    payloadX = cartX + sin(alphaX)*lstring;
-    payloadY = cartY + sin(alphaY)*lstring;
+%     %% Get trajectory from simulink data
+%     j = 0;
+%     for i = 1:size(simout.get('yout').signals,2)
+%         if endsWith(simout.get('yout').signals(i).blockName, '/output')
+%             j = i;
+%         end
+%     end
+%     if j == 0
+%         printf('No output signal named "output" specified')
+%     end
+%     
+    %% Customised parameters
+    timeV = simout.Time;
+    cartX = simout.CartX(:,2);
+    cartY = simout.CartY(:,2);
+    alphaX = simout.AngleX(:,2);
+    alphaY = simout.AngleY(:,2);
+    payloadX = simout.TrajX(:,2);
+    payloadY = simout.TrajY(:,2);
     
     
     %% Plot stuff if desired
-    hold off
-    plot(payloadX, payloadY)
-    hold on
-    for i = 1:size(targets,1)            
-        rectangle('Position',[(targets(i,1)-1)/100-delta (targets(i,2)-1)/100-delta 2*delta 2*delta])
-    end
-    for i = 1:size(obstacles,1)
-        delta = 0.01;
-        rectangle('Position',[(obstacles(i,1)-1)/100-delta (obstacles(i,2)-1)/100-delta 2*delta 2*delta],'FaceColor','red')
-    end
+%     hold off
+%     plot(payloadX, payloadY)
+%     hold on
+%     for i = 1:size(targets,1)            
+%         rectangle('Position',[(targets(i,1)-1)/100-delta (targets(i,2)-1)/100-delta 2*delta 2*delta])
+%     end
+%     for i = 1:size(obstacles,1)
+%         delta = 0.01;
+%         rectangle('Position',[(obstacles(i,1)-1)/100-delta (obstacles(i,2)-1)/100-delta 2*delta 2*delta],'FaceColor','red')
+%     end
     
     %% Calculate score
     tarN = 0;
@@ -79,6 +77,9 @@ function score = getScore( simout, obstacles, targets)
           obsN = obsN + 1; % Obstacle was hit
        end
     end
+    
+    %% Include calculation time
+    tComplete = tComplete + add_time;
     
     tarN
     obsN
