@@ -1,8 +1,8 @@
 *.asv
-slprj/*
+SoftwareModel/slprj/*
 *.mexa64
 *.fig
-Output_Fig/Cart Analysis.jpg
-Output_Fig/XY Space.jpg
+SoftwareModel/Output_Fig/Cart Analysis.jpg
+SoftwareModel/Output_Fig/XY Space.jpg
 *.jpg
-MontecarloScenarios/Input/*.csv
+SoftwareModel/MontecarloScenarios/Input/*.csv
