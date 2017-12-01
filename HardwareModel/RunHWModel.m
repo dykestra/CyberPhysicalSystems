@@ -5,7 +5,7 @@ warning('off','Simulink:Engine:OutputNotConnected');
 close all
 clear all
 
-InputFile = 'MontecarloScenarios/Input/scenario2.csv';
+InputFile = 'MontecarloScenarios/Input/scenario4.csv';
 OutputPath = 'SingleScenarios/Output';
 
 %% Function done by other group required for scoring
@@ -15,17 +15,25 @@ OutputPath = 'SingleScenarios/Output';
 tic;
 run('setup.m');
 MAP = txt2Map(InputFile);
-[targets,waypoints] = path_planning(MAP);
+[waypoints] = path_planning(MAP);
 ElapsedTime = toc
 
 %% Define PIDs parameters for model
-Px = 3.0;
-Ix = 0.3;
-Dx = 0.3;
+PC1x = 2.0;
+IC1x = 0.1;
+DC1x = 0.3;
 
-Py = 3.0;
-Iy = 0.3;
-Dy = 0.3;
+PC2x = 3.5;
+IC2x = 0.3;
+DC2x = 0.3;
+
+PC1y = 2.0;
+IC1y = 0.1;
+DC1y = 0.3;
+
+PC2y = 3.5;
+IC2y = 0.3;
+DC2y = 0.3;
 
 %% Run Model
 Crane3D_DevDriv;

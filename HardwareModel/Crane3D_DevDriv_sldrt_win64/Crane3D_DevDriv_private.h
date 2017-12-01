@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.179
+ * Model version              : 1.232
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Thu Nov 30 11:37:48 2017
+ * C source code generated on : Fri Dec 01 15:43:34 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,6 +23,7 @@
 #include "rtwtypes.h"
 #include "multiword_types.h"
 #include "zero_crossing_types.h"
+#include "Crane3D_DevDriv.h"
 
 extern void Crane3D_Encoder(SimStruct *rts);
 extern void Crane3D_PWM(SimStruct *rts);
@@ -33,6 +34,10 @@ extern void Crane3D_PWMPrescaler(SimStruct *rts);
 extern void Crane3D_ResetEncoder(SimStruct *rts);
 extern void Crane3D_ResetSwitchFlag(SimStruct *rts);
 extern void Crane3D_ThermFlag(SimStruct *rts);
+extern void Crane3D_DevDriv_GainDesch(real_T rtu_C1, real_T rtu_C2, real_T
+  rtu_C3, real_T rtu_C4, real_T rtu_Class, B_GainDesch_Crane3D_DevDriv_T *localB);
+extern void Crane3D_DevDriv_GainSch(real_T rtu_Input, real_T rtu_Class,
+  B_GainSch_Crane3D_DevDriv_T *localB);
 
 /* private model entry point functions */
 extern void Crane3D_DevDriv_derivatives(void);

@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.179
+ * Model version              : 1.232
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Thu Nov 30 11:37:48 2017
+ * C source code generated on : Fri Dec 01 15:43:34 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,48 +23,101 @@
 
 /* Block parameters (auto storage) */
 P_Crane3D_DevDriv_T Crane3D_DevDriv_P = {
-  0.3,                                 /* Variable: Dx
-                                        * Referenced by: '<S6>/Derivative Gain'
+  0.3,                                 /* Variable: DC1x
+                                        * Referenced by: '<S11>/Derivative Gain'
                                         */
-  0.3,                                 /* Variable: Dy
-                                        * Referenced by: '<S7>/Derivative Gain'
+  0.3,                                 /* Variable: DC1y
+                                        * Referenced by: '<S16>/Derivative Gain'
                                         */
-  0.3,                                 /* Variable: Ix
-                                        * Referenced by: '<S6>/Integral Gain'
+  0.3,                                 /* Variable: DC2x
+                                        * Referenced by:
+                                        *   '<S12>/Derivative Gain'
+                                        *   '<S13>/Derivative Gain'
+                                        *   '<S14>/Derivative Gain'
                                         */
-  0.3,                                 /* Variable: Iy
-                                        * Referenced by: '<S7>/Integral Gain'
+  0.3,                                 /* Variable: DC2y
+                                        * Referenced by:
+                                        *   '<S15>/Derivative Gain'
+                                        *   '<S17>/Derivative Gain'
+                                        *   '<S18>/Derivative Gain'
                                         */
-  3.0,                                 /* Variable: Px
-                                        * Referenced by: '<S6>/Proportional Gain'
+  0.1,                                 /* Variable: IC1x
+                                        * Referenced by: '<S11>/Integral Gain'
                                         */
-  3.0,                                 /* Variable: Py
-                                        * Referenced by: '<S7>/Proportional Gain'
+  0.1,                                 /* Variable: IC1y
+                                        * Referenced by: '<S16>/Integral Gain'
+                                        */
+  0.3,                                 /* Variable: IC2x
+                                        * Referenced by:
+                                        *   '<S12>/Integral Gain'
+                                        *   '<S13>/Integral Gain'
+                                        *   '<S14>/Integral Gain'
+                                        */
+  0.3,                                 /* Variable: IC2y
+                                        * Referenced by:
+                                        *   '<S15>/Integral Gain'
+                                        *   '<S17>/Integral Gain'
+                                        *   '<S18>/Integral Gain'
+                                        */
+  2.0,                                 /* Variable: PC1x
+                                        * Referenced by: '<S11>/Proportional Gain'
+                                        */
+  2.0,                                 /* Variable: PC1y
+                                        * Referenced by: '<S16>/Proportional Gain'
+                                        */
+  3.5,                                 /* Variable: PC2x
+                                        * Referenced by:
+                                        *   '<S12>/Proportional Gain'
+                                        *   '<S13>/Proportional Gain'
+                                        *   '<S14>/Proportional Gain'
+                                        */
+  3.5,                                 /* Variable: PC2y
+                                        * Referenced by:
+                                        *   '<S15>/Proportional Gain'
+                                        *   '<S17>/Proportional Gain'
+                                        *   '<S18>/Proportional Gain'
                                         */
 
   /*  Variable: waypoints
    * Referenced by: '<Root>/Constant'
    */
-  { 0.0, 0.0, 4.0, 6.0, 34.0, 43.0, 44.0, 44.0, 46.0, 0.0, 28.0, 32.0, 30.0,
-    30.0, 21.0, 21.0, 36.0, 38.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0, 9.0,
-    35.0, 35.0, 35.0, 35.0, 35.0, 35.0, 35.0, 35.0, 35.0 },
-  -1.0,                                /* Mask Parameter: PIDController_LowerSaturationLimit
-                                        * Referenced by: '<S6>/Saturate'
-                                        */
-  -1.0,                                /* Mask Parameter: PIDController2_LowerSaturationLimit
-                                        * Referenced by: '<S7>/Saturate'
-                                        */
+  { 0.0, 13.0, 23.0, 25.0, 22.0, 22.0, 37.0, 37.0, 38.0, 0.0, 13.0, 13.0, 11.0,
+    14.0, 20.0, 35.0, 36.0, 37.0, 26.0, 26.0, 27.0, 26.0, 27.0, 27.0, 27.0, 27.0,
+    27.0, 9.0, 9.0, 12.0, 9.0, 12.0, 12.0, 12.0, 12.0, 12.0, 0.0, 0.0, 0.0, 1.0,
+    0.0, 0.0, 0.0, 0.0, 1.0 },
+
+  /*  Variable: xRange
+   * Referenced by: '<Root>/X_range'
+   */
+  { 0.0, 0.52 },
+
+  /*  Variable: yRange
+   * Referenced by: '<Root>/Y_range '
+   */
+  { 0.0, 0.62 },
   30.0,                                /* Mask Parameter: PIDController_N
-                                        * Referenced by: '<S6>/Filter Coefficient'
+                                        * Referenced by: '<S11>/Filter Coefficient'
+                                        */
+  30.0,                                /* Mask Parameter: PIDController1_N
+                                        * Referenced by: '<S12>/Filter Coefficient'
                                         */
   30.0,                                /* Mask Parameter: PIDController2_N
-                                        * Referenced by: '<S7>/Filter Coefficient'
+                                        * Referenced by: '<S13>/Filter Coefficient'
                                         */
-  1.0,                                 /* Mask Parameter: PIDController_UpperSaturationLimit
-                                        * Referenced by: '<S6>/Saturate'
+  30.0,                                /* Mask Parameter: PIDController3_N
+                                        * Referenced by: '<S14>/Filter Coefficient'
                                         */
-  1.0,                                 /* Mask Parameter: PIDController2_UpperSaturationLimit
-                                        * Referenced by: '<S7>/Saturate'
+  30.0,                                /* Mask Parameter: PIDController5_N
+                                        * Referenced by: '<S16>/Filter Coefficient'
+                                        */
+  30.0,                                /* Mask Parameter: PIDController6_N
+                                        * Referenced by: '<S17>/Filter Coefficient'
+                                        */
+  30.0,                                /* Mask Parameter: PIDController4_N
+                                        * Referenced by: '<S15>/Filter Coefficient'
+                                        */
+  30.0,                                /* Mask Parameter: PIDController7_N
+                                        * Referenced by: '<S18>/Filter Coefficient'
                                         */
 
   /*  Computed Parameter: Encoder_P1_Size
@@ -97,17 +150,53 @@ P_Crane3D_DevDriv_T Crane3D_DevDriv_P = {
   0.001534,                            /* Expression: Crane3D_ScaleCoeff( 5 )
                                         * Referenced by: '<S3>/Y Angle Scale'
                                         */
-  0.0,                                 /* Expression: InitialConditionForFilter
-                                        * Referenced by: '<S6>/Filter'
-                                        */
   0.0,                                 /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S6>/Integrator'
+                                        * Referenced by: '<S11>/Integrator'
                                         */
   0.0,                                 /* Expression: InitialConditionForFilter
-                                        * Referenced by: '<S7>/Filter'
+                                        * Referenced by: '<S11>/Filter'
                                         */
   0.0,                                 /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S7>/Integrator'
+                                        * Referenced by: '<S12>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S12>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S13>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S13>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S14>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S14>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S16>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S16>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S17>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S17>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S15>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S15>/Filter'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S18>/Integrator'
+                                        */
+  0.0,                                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S18>/Filter'
                                         */
   0.0,                                 /* Expression: 0
                                         * Referenced by: '<S1>/Constant'

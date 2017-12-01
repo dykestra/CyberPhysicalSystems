@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.179
+ * Model version              : 1.232
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Thu Nov 30 11:37:48 2017
+ * C source code generated on : Fri Dec 01 15:43:34 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -811,6 +811,19 @@
 /* Definition for use in the target main file */
 #define Crane3D_DevDriv_rtModel        RT_MODEL_Crane3D_DevDriv_T
 
+/* Block signals for system '<S6>/GainDesch' */
+typedef struct {
+  real_T Out;                          /* '<S6>/GainDesch' */
+} B_GainDesch_Crane3D_DevDriv_T;
+
+/* Block signals for system '<S6>/GainSch' */
+typedef struct {
+  real_T C1;                           /* '<S6>/GainSch' */
+  real_T C2;                           /* '<S6>/GainSch' */
+  real_T C3;                           /* '<S6>/GainSch' */
+  real_T C4;                           /* '<S6>/GainSch' */
+} B_GainSch_Crane3D_DevDriv_T;
+
 /* Block signals (auto storage) */
 typedef struct {
   real_T Clock;                        /* '<Root>/Clock' */
@@ -819,14 +832,38 @@ typedef struct {
   real_T YScale;                       /* '<S3>/Y Scale' */
   real_T XAngleScale;                  /* '<S3>/X Angle Scale' */
   real_T YAngleScale;                  /* '<S3>/Y Angle Scale' */
-  real_T DerivativeGain;               /* '<S6>/Derivative Gain' */
-  real_T FilterCoefficient;            /* '<S6>/Filter Coefficient' */
-  real_T IntegralGain;                 /* '<S6>/Integral Gain' */
-  real_T ProportionalGain;             /* '<S6>/Proportional Gain' */
-  real_T DerivativeGain_o;             /* '<S7>/Derivative Gain' */
-  real_T FilterCoefficient_m;          /* '<S7>/Filter Coefficient' */
-  real_T IntegralGain_b;               /* '<S7>/Integral Gain' */
-  real_T ProportionalGain_e;           /* '<S7>/Proportional Gain' */
+  real_T ProportionalGain;             /* '<S11>/Proportional Gain' */
+  real_T DerivativeGain;               /* '<S11>/Derivative Gain' */
+  real_T FilterCoefficient;            /* '<S11>/Filter Coefficient' */
+  real_T ProportionalGain_j;           /* '<S12>/Proportional Gain' */
+  real_T DerivativeGain_j;             /* '<S12>/Derivative Gain' */
+  real_T FilterCoefficient_c;          /* '<S12>/Filter Coefficient' */
+  real_T ProportionalGain_h;           /* '<S13>/Proportional Gain' */
+  real_T DerivativeGain_jh;            /* '<S13>/Derivative Gain' */
+  real_T FilterCoefficient_b;          /* '<S13>/Filter Coefficient' */
+  real_T ProportionalGain_f;           /* '<S14>/Proportional Gain' */
+  real_T DerivativeGain_k;             /* '<S14>/Derivative Gain' */
+  real_T FilterCoefficient_j;          /* '<S14>/Filter Coefficient' */
+  real_T ProportionalGain_o;           /* '<S16>/Proportional Gain' */
+  real_T DerivativeGain_c;             /* '<S16>/Derivative Gain' */
+  real_T FilterCoefficient_e;          /* '<S16>/Filter Coefficient' */
+  real_T ProportionalGain_c;           /* '<S17>/Proportional Gain' */
+  real_T DerivativeGain_p;             /* '<S17>/Derivative Gain' */
+  real_T FilterCoefficient_d;          /* '<S17>/Filter Coefficient' */
+  real_T ProportionalGain_g;           /* '<S15>/Proportional Gain' */
+  real_T DerivativeGain_m;             /* '<S15>/Derivative Gain' */
+  real_T FilterCoefficient_j0;         /* '<S15>/Filter Coefficient' */
+  real_T ProportionalGain_p;           /* '<S18>/Proportional Gain' */
+  real_T DerivativeGain_cw;            /* '<S18>/Derivative Gain' */
+  real_T FilterCoefficient_jx;         /* '<S18>/Filter Coefficient' */
+  real_T IntegralGain;                 /* '<S11>/Integral Gain' */
+  real_T IntegralGain_l;               /* '<S12>/Integral Gain' */
+  real_T IntegralGain_o;               /* '<S13>/Integral Gain' */
+  real_T IntegralGain_lr;              /* '<S14>/Integral Gain' */
+  real_T IntegralGain_n;               /* '<S15>/Integral Gain' */
+  real_T IntegralGain_g;               /* '<S16>/Integral Gain' */
+  real_T IntegralGain_m;               /* '<S17>/Integral Gain' */
+  real_T IntegralGain_e;               /* '<S18>/Integral Gain' */
   real_T PWM[3];                       /* '<S3>/PWM' */
   real_T Saturation[3];                /* '<S3>/Saturation' */
   real_T LimitFlag[3];                 /* '<S3>/LimitFlag' */
@@ -844,8 +881,13 @@ typedef struct {
   real_T ThermFlagSource[3];           /* '<S3>/ThermFlagSource' */
   real_T x;                            /* '<Root>/Select most convenient path' */
   real_T y;                            /* '<Root>/Select most convenient path' */
+  real_T Class;                        /* '<Root>/Select most convenient path' */
   real_T x_l;                          /* '<Root>/Convert Coordinates' */
   real_T y_f;                          /* '<Root>/Convert Coordinates' */
+  B_GainSch_Crane3D_DevDriv_T sf_GainSch1;/* '<S6>/GainSch1' */
+  B_GainSch_Crane3D_DevDriv_T sf_GainSch;/* '<S6>/GainSch' */
+  B_GainDesch_Crane3D_DevDriv_T sf_GainDesch1;/* '<S6>/GainDesch1' */
+  B_GainDesch_Crane3D_DevDriv_T sf_GainDesch;/* '<S6>/GainDesch' */
 } B_Crane3D_DevDriv_T;
 
 /* Block states (auto storage) for system '<Root>' */
@@ -890,26 +932,62 @@ typedef struct {
 
 /* Continuous states (auto storage) */
 typedef struct {
-  real_T Filter_CSTATE;                /* '<S6>/Filter' */
-  real_T Integrator_CSTATE;            /* '<S6>/Integrator' */
-  real_T Filter_CSTATE_g;              /* '<S7>/Filter' */
-  real_T Integrator_CSTATE_b;          /* '<S7>/Integrator' */
+  real_T Integrator_CSTATE;            /* '<S11>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S11>/Filter' */
+  real_T Integrator_CSTATE_n;          /* '<S12>/Integrator' */
+  real_T Filter_CSTATE_g;              /* '<S12>/Filter' */
+  real_T Integrator_CSTATE_e;          /* '<S13>/Integrator' */
+  real_T Filter_CSTATE_i;              /* '<S13>/Filter' */
+  real_T Integrator_CSTATE_l;          /* '<S14>/Integrator' */
+  real_T Filter_CSTATE_d;              /* '<S14>/Filter' */
+  real_T Integrator_CSTATE_d;          /* '<S16>/Integrator' */
+  real_T Filter_CSTATE_p;              /* '<S16>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S17>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S17>/Filter' */
+  real_T Integrator_CSTATE_i;          /* '<S15>/Integrator' */
+  real_T Filter_CSTATE_ie;             /* '<S15>/Filter' */
+  real_T Integrator_CSTATE_c;          /* '<S18>/Integrator' */
+  real_T Filter_CSTATE_pq;             /* '<S18>/Filter' */
 } X_Crane3D_DevDriv_T;
 
 /* State derivatives (auto storage) */
 typedef struct {
-  real_T Filter_CSTATE;                /* '<S6>/Filter' */
-  real_T Integrator_CSTATE;            /* '<S6>/Integrator' */
-  real_T Filter_CSTATE_g;              /* '<S7>/Filter' */
-  real_T Integrator_CSTATE_b;          /* '<S7>/Integrator' */
+  real_T Integrator_CSTATE;            /* '<S11>/Integrator' */
+  real_T Filter_CSTATE;                /* '<S11>/Filter' */
+  real_T Integrator_CSTATE_n;          /* '<S12>/Integrator' */
+  real_T Filter_CSTATE_g;              /* '<S12>/Filter' */
+  real_T Integrator_CSTATE_e;          /* '<S13>/Integrator' */
+  real_T Filter_CSTATE_i;              /* '<S13>/Filter' */
+  real_T Integrator_CSTATE_l;          /* '<S14>/Integrator' */
+  real_T Filter_CSTATE_d;              /* '<S14>/Filter' */
+  real_T Integrator_CSTATE_d;          /* '<S16>/Integrator' */
+  real_T Filter_CSTATE_p;              /* '<S16>/Filter' */
+  real_T Integrator_CSTATE_a;          /* '<S17>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S17>/Filter' */
+  real_T Integrator_CSTATE_i;          /* '<S15>/Integrator' */
+  real_T Filter_CSTATE_ie;             /* '<S15>/Filter' */
+  real_T Integrator_CSTATE_c;          /* '<S18>/Integrator' */
+  real_T Filter_CSTATE_pq;             /* '<S18>/Filter' */
 } XDot_Crane3D_DevDriv_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Filter_CSTATE;             /* '<S6>/Filter' */
-  boolean_T Integrator_CSTATE;         /* '<S6>/Integrator' */
-  boolean_T Filter_CSTATE_g;           /* '<S7>/Filter' */
-  boolean_T Integrator_CSTATE_b;       /* '<S7>/Integrator' */
+  boolean_T Integrator_CSTATE;         /* '<S11>/Integrator' */
+  boolean_T Filter_CSTATE;             /* '<S11>/Filter' */
+  boolean_T Integrator_CSTATE_n;       /* '<S12>/Integrator' */
+  boolean_T Filter_CSTATE_g;           /* '<S12>/Filter' */
+  boolean_T Integrator_CSTATE_e;       /* '<S13>/Integrator' */
+  boolean_T Filter_CSTATE_i;           /* '<S13>/Filter' */
+  boolean_T Integrator_CSTATE_l;       /* '<S14>/Integrator' */
+  boolean_T Filter_CSTATE_d;           /* '<S14>/Filter' */
+  boolean_T Integrator_CSTATE_d;       /* '<S16>/Integrator' */
+  boolean_T Filter_CSTATE_p;           /* '<S16>/Filter' */
+  boolean_T Integrator_CSTATE_a;       /* '<S17>/Integrator' */
+  boolean_T Filter_CSTATE_m;           /* '<S17>/Filter' */
+  boolean_T Integrator_CSTATE_i;       /* '<S15>/Integrator' */
+  boolean_T Filter_CSTATE_ie;          /* '<S15>/Filter' */
+  boolean_T Integrator_CSTATE_c;       /* '<S18>/Integrator' */
+  boolean_T Filter_CSTATE_pq;          /* '<S18>/Filter' */
 } XDis_Crane3D_DevDriv_T;
 
 #ifndef ODE5_INTG
@@ -939,45 +1017,93 @@ typedef struct {
 
 /* Parameters (auto storage) */
 struct P_Crane3D_DevDriv_T_ {
-  real_T Dx;                           /* Variable: Dx
-                                        * Referenced by: '<S6>/Derivative Gain'
+  real_T DC1x;                         /* Variable: DC1x
+                                        * Referenced by: '<S11>/Derivative Gain'
                                         */
-  real_T Dy;                           /* Variable: Dy
-                                        * Referenced by: '<S7>/Derivative Gain'
+  real_T DC1y;                         /* Variable: DC1y
+                                        * Referenced by: '<S16>/Derivative Gain'
                                         */
-  real_T Ix;                           /* Variable: Ix
-                                        * Referenced by: '<S6>/Integral Gain'
+  real_T DC2x;                         /* Variable: DC2x
+                                        * Referenced by:
+                                        *   '<S12>/Derivative Gain'
+                                        *   '<S13>/Derivative Gain'
+                                        *   '<S14>/Derivative Gain'
                                         */
-  real_T Iy;                           /* Variable: Iy
-                                        * Referenced by: '<S7>/Integral Gain'
+  real_T DC2y;                         /* Variable: DC2y
+                                        * Referenced by:
+                                        *   '<S15>/Derivative Gain'
+                                        *   '<S17>/Derivative Gain'
+                                        *   '<S18>/Derivative Gain'
                                         */
-  real_T Px;                           /* Variable: Px
-                                        * Referenced by: '<S6>/Proportional Gain'
+  real_T IC1x;                         /* Variable: IC1x
+                                        * Referenced by: '<S11>/Integral Gain'
                                         */
-  real_T Py;                           /* Variable: Py
-                                        * Referenced by: '<S7>/Proportional Gain'
+  real_T IC1y;                         /* Variable: IC1y
+                                        * Referenced by: '<S16>/Integral Gain'
                                         */
-  real_T waypoints[36];                /* Variable: waypoints
+  real_T IC2x;                         /* Variable: IC2x
+                                        * Referenced by:
+                                        *   '<S12>/Integral Gain'
+                                        *   '<S13>/Integral Gain'
+                                        *   '<S14>/Integral Gain'
+                                        */
+  real_T IC2y;                         /* Variable: IC2y
+                                        * Referenced by:
+                                        *   '<S15>/Integral Gain'
+                                        *   '<S17>/Integral Gain'
+                                        *   '<S18>/Integral Gain'
+                                        */
+  real_T PC1x;                         /* Variable: PC1x
+                                        * Referenced by: '<S11>/Proportional Gain'
+                                        */
+  real_T PC1y;                         /* Variable: PC1y
+                                        * Referenced by: '<S16>/Proportional Gain'
+                                        */
+  real_T PC2x;                         /* Variable: PC2x
+                                        * Referenced by:
+                                        *   '<S12>/Proportional Gain'
+                                        *   '<S13>/Proportional Gain'
+                                        *   '<S14>/Proportional Gain'
+                                        */
+  real_T PC2y;                         /* Variable: PC2y
+                                        * Referenced by:
+                                        *   '<S15>/Proportional Gain'
+                                        *   '<S17>/Proportional Gain'
+                                        *   '<S18>/Proportional Gain'
+                                        */
+  real_T waypoints[45];                /* Variable: waypoints
                                         * Referenced by: '<Root>/Constant'
                                         */
-  real_T PIDController_LowerSaturationLimit;/* Mask Parameter: PIDController_LowerSaturationLimit
-                                             * Referenced by: '<S6>/Saturate'
-                                             */
-  real_T PIDController2_LowerSaturationLimit;/* Mask Parameter: PIDController2_LowerSaturationLimit
-                                              * Referenced by: '<S7>/Saturate'
-                                              */
+  real_T xRange[2];                    /* Variable: xRange
+                                        * Referenced by: '<Root>/X_range'
+                                        */
+  real_T yRange[2];                    /* Variable: yRange
+                                        * Referenced by: '<Root>/Y_range '
+                                        */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
-                                        * Referenced by: '<S6>/Filter Coefficient'
+                                        * Referenced by: '<S11>/Filter Coefficient'
+                                        */
+  real_T PIDController1_N;             /* Mask Parameter: PIDController1_N
+                                        * Referenced by: '<S12>/Filter Coefficient'
                                         */
   real_T PIDController2_N;             /* Mask Parameter: PIDController2_N
-                                        * Referenced by: '<S7>/Filter Coefficient'
+                                        * Referenced by: '<S13>/Filter Coefficient'
                                         */
-  real_T PIDController_UpperSaturationLimit;/* Mask Parameter: PIDController_UpperSaturationLimit
-                                             * Referenced by: '<S6>/Saturate'
-                                             */
-  real_T PIDController2_UpperSaturationLimit;/* Mask Parameter: PIDController2_UpperSaturationLimit
-                                              * Referenced by: '<S7>/Saturate'
-                                              */
+  real_T PIDController3_N;             /* Mask Parameter: PIDController3_N
+                                        * Referenced by: '<S14>/Filter Coefficient'
+                                        */
+  real_T PIDController5_N;             /* Mask Parameter: PIDController5_N
+                                        * Referenced by: '<S16>/Filter Coefficient'
+                                        */
+  real_T PIDController6_N;             /* Mask Parameter: PIDController6_N
+                                        * Referenced by: '<S17>/Filter Coefficient'
+                                        */
+  real_T PIDController4_N;             /* Mask Parameter: PIDController4_N
+                                        * Referenced by: '<S15>/Filter Coefficient'
+                                        */
+  real_T PIDController7_N;             /* Mask Parameter: PIDController7_N
+                                        * Referenced by: '<S18>/Filter Coefficient'
+                                        */
   real_T Encoder_P1_Size[2];           /* Computed Parameter: Encoder_P1_Size
                                         * Referenced by: '<S3>/Encoder'
                                         */
@@ -1005,17 +1131,53 @@ struct P_Crane3D_DevDriv_T_ {
   real_T YAngleScale_Gain;             /* Expression: Crane3D_ScaleCoeff( 5 )
                                         * Referenced by: '<S3>/Y Angle Scale'
                                         */
-  real_T Filter_IC;                    /* Expression: InitialConditionForFilter
-                                        * Referenced by: '<S6>/Filter'
-                                        */
   real_T Integrator_IC;                /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S6>/Integrator'
+                                        * Referenced by: '<S11>/Integrator'
                                         */
-  real_T Filter_IC_k;                  /* Expression: InitialConditionForFilter
-                                        * Referenced by: '<S7>/Filter'
+  real_T Filter_IC;                    /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S11>/Filter'
                                         */
-  real_T Integrator_IC_j;              /* Expression: InitialConditionForIntegrator
-                                        * Referenced by: '<S7>/Integrator'
+  real_T Integrator_IC_a;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S12>/Integrator'
+                                        */
+  real_T Filter_IC_j;                  /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S12>/Filter'
+                                        */
+  real_T Integrator_IC_f;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S13>/Integrator'
+                                        */
+  real_T Filter_IC_m;                  /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S13>/Filter'
+                                        */
+  real_T Integrator_IC_h;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S14>/Integrator'
+                                        */
+  real_T Filter_IC_o;                  /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S14>/Filter'
+                                        */
+  real_T Integrator_IC_c;              /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S16>/Integrator'
+                                        */
+  real_T Filter_IC_a;                  /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S16>/Filter'
+                                        */
+  real_T Integrator_IC_fc;             /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S17>/Integrator'
+                                        */
+  real_T Filter_IC_c;                  /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S17>/Filter'
+                                        */
+  real_T Integrator_IC_cx;             /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S15>/Integrator'
+                                        */
+  real_T Filter_IC_or;                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S15>/Filter'
+                                        */
+  real_T Integrator_IC_a2;             /* Expression: InitialConditionForIntegrator
+                                        * Referenced by: '<S18>/Integrator'
+                                        */
+  real_T Filter_IC_ms;                 /* Expression: InitialConditionForFilter
+                                        * Referenced by: '<S18>/Filter'
                                         */
   real_T Constant_Value;               /* Expression: 0
                                         * Referenced by: '<S1>/Constant'
@@ -1286,8 +1448,8 @@ struct tag_RTM_Crane3D_DevDriv_T {
     boolean_T zCCacheNeedsReset;
     boolean_T derivCacheNeedsReset;
     boolean_T blkStateChange;
-    real_T odeY[4];
-    real_T odeF[6][4];
+    real_T odeY[16];
+    real_T odeF[6][16];
     ODE5_IntgData intgData;
     void *dwork;
   } ModelData;
@@ -1416,8 +1578,19 @@ extern RT_MODEL_Crane3D_DevDriv_T *const Crane3D_DevDriv_M;
  * '<S2>'   : 'Crane3D_DevDriv/Convert Coordinates'
  * '<S3>'   : 'Crane3D_DevDriv/Crane 3D'
  * '<S4>'   : 'Crane3D_DevDriv/Select most convenient path'
- * '<S5>'   : 'Crane3D_DevDriv/Controller/PID Controler'
- * '<S6>'   : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller'
- * '<S7>'   : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller2'
+ * '<S5>'   : 'Crane3D_DevDriv/Controller/Enforce Soft Limits and Overflow'
+ * '<S6>'   : 'Crane3D_DevDriv/Controller/PID Controler'
+ * '<S7>'   : 'Crane3D_DevDriv/Controller/PID Controler/GainDesch'
+ * '<S8>'   : 'Crane3D_DevDriv/Controller/PID Controler/GainDesch1'
+ * '<S9>'   : 'Crane3D_DevDriv/Controller/PID Controler/GainSch'
+ * '<S10>'  : 'Crane3D_DevDriv/Controller/PID Controler/GainSch1'
+ * '<S11>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller'
+ * '<S12>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller1'
+ * '<S13>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller2'
+ * '<S14>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller3'
+ * '<S15>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller4'
+ * '<S16>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller5'
+ * '<S17>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller6'
+ * '<S18>'  : 'Crane3D_DevDriv/Controller/PID Controler/PID Controller7'
  */
 #endif                                 /* RTW_HEADER_Crane3D_DevDriv_h_ */

@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.179
+ * Model version              : 1.232
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Thu Nov 30 11:37:48 2017
+ * C source code generated on : Fri Dec 01 15:43:34 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -81,7 +81,7 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   real_T *f5 = id->f[5];
   real_T hB[6];
   int_T i;
-  int_T nXc = 4;
+  int_T nXc = 16;
   rtsiSetSimTimeStep(si,MINOR_TIME_STEP);
 
   /* Save the state values at time t in y, we'll use x as ynew. */
@@ -176,12 +176,105 @@ static void rt_ertODEUpdateContinuousStates(RTWSolverInfo *si )
   rtsiSetSimTimeStep(si,MAJOR_TIME_STEP);
 }
 
+/*
+ * Output and update for atomic system:
+ *    '<S6>/GainDesch'
+ *    '<S6>/GainDesch1'
+ */
+void Crane3D_DevDriv_GainDesch(real_T rtu_C1, real_T rtu_C2, real_T rtu_C3,
+  real_T rtu_C4, real_T rtu_Class, B_GainDesch_Crane3D_DevDriv_T *localB)
+{
+  /* MATLAB Function 'Controller/PID Controler/GainDesch': '<S7>:1' */
+  /* '<S7>:1:3' */
+  localB->Out = rtu_C1;
+  switch ((int32_T)rtu_Class) {
+   case 1:
+    /* '<S7>:1:7' */
+    break;
+
+   case 2:
+    /* '<S7>:1:9' */
+    localB->Out = rtu_C2;
+    break;
+
+   case 3:
+    /* '<S7>:1:11' */
+    localB->Out = rtu_C3;
+    break;
+
+   case 4:
+    /* '<S7>:1:13' */
+    localB->Out = rtu_C4;
+    break;
+  }
+}
+
+/*
+ * Output and update for atomic system:
+ *    '<S6>/GainSch'
+ *    '<S6>/GainSch1'
+ */
+void Crane3D_DevDriv_GainSch(real_T rtu_Input, real_T rtu_Class,
+  B_GainSch_Crane3D_DevDriv_T *localB)
+{
+  /* MATLAB Function 'Controller/PID Controler/GainSch': '<S9>:1' */
+  /* '<S9>:1:3' */
+  localB->C1 = 0.0;
+
+  /* '<S9>:1:4' */
+  localB->C2 = 0.0;
+
+  /* '<S9>:1:5' */
+  localB->C3 = 0.0;
+
+  /* '<S9>:1:6' */
+  localB->C4 = 0.0;
+  switch ((int32_T)rtu_Class) {
+   case 1:
+    /* '<S9>:1:10' */
+    localB->C1 = rtu_Input;
+    break;
+
+   case 2:
+    /* '<S9>:1:12' */
+    localB->C2 = rtu_Input;
+    break;
+
+   case 3:
+    /* '<S9>:1:14' */
+    localB->C3 = rtu_Input;
+    break;
+
+   case 4:
+    /* '<S9>:1:16' */
+    localB->C4 = rtu_Input;
+    break;
+  }
+}
+
 /* Model output function */
 void Crane3D_DevDriv_output(void)
 {
-  real_T y;
-  real_T rtb_Encoder500PPR[5];
+  /* local block i/o variables */
+  real_T rtb_Sum;
+  real_T rtb_Sum_e;
+  real_T rtb_Sum_o;
+  real_T rtb_Sum_h;
+  real_T rtb_Sum_a;
+  real_T rtb_Sum_ht;
+  real_T rtb_Sum_d;
+  real_T rtb_Sum_ac;
+  real_T rtb_xerror;
   real_T rtb_yerror;
+  real_T x;
+  real_T y;
+  real_T x_max;
+  real_T x_min;
+  real_T y_max;
+  real_T y_min;
+  real_T a;
+  real_T b_a;
+  real_T rtb_Encoder500PPR[5];
   int32_T i;
   if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
     /* set solver stop time */
@@ -258,85 +351,409 @@ void Crane3D_DevDriv_output(void)
      *  Constant: '<Root>/Constant'
      */
     /* MATLAB Function 'Select most convenient path': '<S4>:1' */
-    /* % Random default values - dont touch */
-    /* '<S4>:1:9' */
-    rtb_yerror = 0.252;
+    /* '<S4>:1:8' */
+    Crane3D_DevDriv_B.Class = 1.0;
 
-    /* '<S4>:1:10' */
+    /* % Random default values - dont touch */
+    /* '<S4>:1:11' */
+    x = 0.252;
+
+    /* '<S4>:1:12' */
     y = 0.365;
     if (Crane3D_DevDriv_DW.WP_Index <= 9.0) {
-      /* '<S4>:1:11' */
-      /* '<S4>:1:12' */
-      rtb_yerror = Crane3D_DevDriv_P.waypoints[(int32_T)
-        Crane3D_DevDriv_DW.WP_Index - 1] / 100.0;
-
       /* '<S4>:1:13' */
+      /* '<S4>:1:14' */
+      x = Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index - 1] /
+        100.0;
+
+      /* '<S4>:1:15' */
       y = Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 8] /
         100.0;
 
-      /* '<S4>:1:14' */
-      /* '<S4>:1:15' */
-      /* '<S4>:1:16' */
-      /* '<S4>:1:17' */
+      /*     %% Establish boundary conditions and controller class */
+      /* '<S4>:1:18' */
+      x_max = x + 0.02;
+
+      /* '<S4>:1:19' */
+      x_min = x - 0.02;
+
+      /* '<S4>:1:20' */
+      y_max = y + 0.02;
+
+      /* '<S4>:1:21' */
+      y_min = y - 0.02;
+
+      /* '<S4>:1:23' */
+      Crane3D_DevDriv_B.Class = 4.0;
+
+      /* This function calculates the distance between any two cartesian  */
+      /* coordinates. */
+      /*    Copyright 2009-2010 The MathWorks, Inc. */
+      a = x - Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index +
+        17];
+      b_a = y - Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index
+        + 26];
+      if (sqrt(a * a + b_a * b_a) < 0.1) {
+        /* '<S4>:1:24' */
+        /* '<S4>:1:25' */
+        Crane3D_DevDriv_B.Class = 3.0;
+      }
+
+      if (Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 35]
+          == 1.0) {
+        /* '<S4>:1:28' */
+        /* '<S4>:1:29' */
+        x_max = x + 0.01;
+
+        /* '<S4>:1:30' */
+        x_min = x - 0.01;
+
+        /* '<S4>:1:31' */
+        y_max = y + 0.01;
+
+        /* '<S4>:1:32' */
+        y_min = y - 0.01;
+
+        /* '<S4>:1:34' */
+        Crane3D_DevDriv_B.Class = 2.0;
+
+        /* This function calculates the distance between any two cartesian  */
+        /* coordinates. */
+        /*    Copyright 2009-2010 The MathWorks, Inc. */
+        a = x - Crane3D_DevDriv_B.x_l;
+        b_a = y - Crane3D_DevDriv_B.y_f;
+        if (fabs(sqrt(a * a + b_a * b_a)) < 0.1) {
+          /* '<S4>:1:35' */
+          /* '<S4>:1:36' */
+          Crane3D_DevDriv_B.Class = 1.0;
+        }
+      }
+
       /*     %% Crane arrived to point */
-      if ((Crane3D_DevDriv_B.x_l <= rtb_yerror + 0.015) &&
-          (Crane3D_DevDriv_B.x_l >= rtb_yerror - 0.015) &&
-          (Crane3D_DevDriv_B.y_f <= y + 0.015) && (Crane3D_DevDriv_B.y_f >= y -
-           0.015)) {
-        /* '<S4>:1:20' */
-        /* '<S4>:1:21' */
+      if ((Crane3D_DevDriv_B.x_l <= x_max) && (Crane3D_DevDriv_B.x_l >= x_min) &&
+          (Crane3D_DevDriv_B.y_f <= y_max) && (Crane3D_DevDriv_B.y_f >= y_min))
+      {
+        /* '<S4>:1:42' */
+        /* '<S4>:1:43' */
         Crane3D_DevDriv_DW.WP_Index++;
         if (Crane3D_DevDriv_DW.WP_Index > 9.0) {
-          /* '<S4>:1:22' */
-          /* '<S4>:1:23' */
+          /* '<S4>:1:44' */
+          /* '<S4>:1:45' */
           Crane3D_DevDriv_DW.WP_Index--;
         }
       }
     }
 
-    Crane3D_DevDriv_B.x = rtb_yerror;
+    Crane3D_DevDriv_B.x = x;
     Crane3D_DevDriv_B.y = y;
 
     /* End of MATLAB Function: '<Root>/Select most convenient path' */
 
-    /* Sum: '<S5>/Sum' */
-    rtb_yerror = Crane3D_DevDriv_B.x - Crane3D_DevDriv_B.x_l;
+    /* Sum: '<S6>/Sum' */
+    rtb_xerror = Crane3D_DevDriv_B.x - Crane3D_DevDriv_B.x_l;
 
-    /* Gain: '<S6>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain = Crane3D_DevDriv_P.Dx * rtb_yerror;
+    /* MATLAB Function: '<S6>/GainSch' */
+    Crane3D_DevDriv_GainSch(rtb_xerror, Crane3D_DevDriv_B.Class,
+      &Crane3D_DevDriv_B.sf_GainSch);
 
-    /* Gain: '<S6>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain = Crane3D_DevDriv_P.Ix * rtb_yerror;
+    /* Gain: '<S11>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain = Crane3D_DevDriv_P.PC1x *
+      Crane3D_DevDriv_B.sf_GainSch.C1;
 
-    /* Gain: '<S6>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain = Crane3D_DevDriv_P.Px * rtb_yerror;
+    /* Gain: '<S11>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain = Crane3D_DevDriv_P.DC1x *
+      Crane3D_DevDriv_B.sf_GainSch.C1;
 
-    /* Sum: '<S5>/Sum1' */
-    rtb_yerror = Crane3D_DevDriv_B.y - Crane3D_DevDriv_B.y_f;
+    /* Gain: '<S12>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_j = Crane3D_DevDriv_P.PC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C2;
 
-    /* Gain: '<S7>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain_o = Crane3D_DevDriv_P.Dy * rtb_yerror;
+    /* Gain: '<S12>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_j = Crane3D_DevDriv_P.DC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C2;
   }
 
-  /* Gain: '<S6>/Filter Coefficient' incorporates:
-   *  Integrator: '<S6>/Filter'
-   *  Sum: '<S6>/SumD'
+  /* Gain: '<S11>/Filter Coefficient' incorporates:
+   *  Integrator: '<S11>/Filter'
+   *  Sum: '<S11>/SumD'
    */
   Crane3D_DevDriv_B.FilterCoefficient = (Crane3D_DevDriv_B.DerivativeGain -
     Crane3D_DevDriv_X.Filter_CSTATE) * Crane3D_DevDriv_P.PIDController_N;
 
-  /* Gain: '<S7>/Filter Coefficient' incorporates:
-   *  Integrator: '<S7>/Filter'
-   *  Sum: '<S7>/SumD'
+  /* Sum: '<S11>/Sum' incorporates:
+   *  Integrator: '<S11>/Integrator'
    */
-  Crane3D_DevDriv_B.FilterCoefficient_m = (Crane3D_DevDriv_B.DerivativeGain_o -
-    Crane3D_DevDriv_X.Filter_CSTATE_g) * Crane3D_DevDriv_P.PIDController2_N;
-  if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
-    /* Gain: '<S7>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain_b = Crane3D_DevDriv_P.Iy * rtb_yerror;
+  rtb_Sum = (Crane3D_DevDriv_B.ProportionalGain +
+             Crane3D_DevDriv_X.Integrator_CSTATE) +
+    Crane3D_DevDriv_B.FilterCoefficient;
 
-    /* Gain: '<S7>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain_e = Crane3D_DevDriv_P.Py * rtb_yerror;
+  /* Gain: '<S12>/Filter Coefficient' incorporates:
+   *  Integrator: '<S12>/Filter'
+   *  Sum: '<S12>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_c = (Crane3D_DevDriv_B.DerivativeGain_j -
+    Crane3D_DevDriv_X.Filter_CSTATE_g) * Crane3D_DevDriv_P.PIDController1_N;
+
+  /* Sum: '<S12>/Sum' incorporates:
+   *  Integrator: '<S12>/Integrator'
+   */
+  rtb_Sum_e = (Crane3D_DevDriv_B.ProportionalGain_j +
+               Crane3D_DevDriv_X.Integrator_CSTATE_n) +
+    Crane3D_DevDriv_B.FilterCoefficient_c;
+  if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
+    /* Gain: '<S13>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_h = Crane3D_DevDriv_P.PC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C3;
+
+    /* Gain: '<S13>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_jh = Crane3D_DevDriv_P.DC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C3;
+
+    /* Gain: '<S14>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_f = Crane3D_DevDriv_P.PC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C4;
+
+    /* Gain: '<S14>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_k = Crane3D_DevDriv_P.DC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C4;
+  }
+
+  /* Gain: '<S13>/Filter Coefficient' incorporates:
+   *  Integrator: '<S13>/Filter'
+   *  Sum: '<S13>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_b = (Crane3D_DevDriv_B.DerivativeGain_jh -
+    Crane3D_DevDriv_X.Filter_CSTATE_i) * Crane3D_DevDriv_P.PIDController2_N;
+
+  /* Sum: '<S13>/Sum' incorporates:
+   *  Integrator: '<S13>/Integrator'
+   */
+  rtb_Sum_o = (Crane3D_DevDriv_B.ProportionalGain_h +
+               Crane3D_DevDriv_X.Integrator_CSTATE_e) +
+    Crane3D_DevDriv_B.FilterCoefficient_b;
+
+  /* Gain: '<S14>/Filter Coefficient' incorporates:
+   *  Integrator: '<S14>/Filter'
+   *  Sum: '<S14>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_j = (Crane3D_DevDriv_B.DerivativeGain_k -
+    Crane3D_DevDriv_X.Filter_CSTATE_d) * Crane3D_DevDriv_P.PIDController3_N;
+
+  /* Sum: '<S14>/Sum' incorporates:
+   *  Integrator: '<S14>/Integrator'
+   */
+  rtb_Sum_h = (Crane3D_DevDriv_B.ProportionalGain_f +
+               Crane3D_DevDriv_X.Integrator_CSTATE_l) +
+    Crane3D_DevDriv_B.FilterCoefficient_j;
+
+  /* MATLAB Function: '<S6>/GainDesch' */
+  Crane3D_DevDriv_GainDesch(rtb_Sum, rtb_Sum_e, rtb_Sum_o, rtb_Sum_h,
+    Crane3D_DevDriv_B.Class, &Crane3D_DevDriv_B.sf_GainDesch);
+  if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
+    /* Sum: '<S6>/Sum1' */
+    rtb_yerror = Crane3D_DevDriv_B.y - Crane3D_DevDriv_B.y_f;
+
+    /* MATLAB Function: '<S6>/GainSch1' */
+    Crane3D_DevDriv_GainSch(rtb_yerror, Crane3D_DevDriv_B.Class,
+      &Crane3D_DevDriv_B.sf_GainSch1);
+
+    /* Gain: '<S16>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_o = Crane3D_DevDriv_P.PC1y *
+      Crane3D_DevDriv_B.sf_GainSch1.C1;
+
+    /* Gain: '<S16>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_c = Crane3D_DevDriv_P.DC1y *
+      Crane3D_DevDriv_B.sf_GainSch1.C1;
+
+    /* Gain: '<S17>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_c = Crane3D_DevDriv_P.PC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C2;
+
+    /* Gain: '<S17>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_p = Crane3D_DevDriv_P.DC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C2;
+  }
+
+  /* Gain: '<S16>/Filter Coefficient' incorporates:
+   *  Integrator: '<S16>/Filter'
+   *  Sum: '<S16>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_e = (Crane3D_DevDriv_B.DerivativeGain_c -
+    Crane3D_DevDriv_X.Filter_CSTATE_p) * Crane3D_DevDriv_P.PIDController5_N;
+
+  /* Sum: '<S16>/Sum' incorporates:
+   *  Integrator: '<S16>/Integrator'
+   */
+  rtb_Sum_a = (Crane3D_DevDriv_B.ProportionalGain_o +
+               Crane3D_DevDriv_X.Integrator_CSTATE_d) +
+    Crane3D_DevDriv_B.FilterCoefficient_e;
+
+  /* Gain: '<S17>/Filter Coefficient' incorporates:
+   *  Integrator: '<S17>/Filter'
+   *  Sum: '<S17>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_d = (Crane3D_DevDriv_B.DerivativeGain_p -
+    Crane3D_DevDriv_X.Filter_CSTATE_m) * Crane3D_DevDriv_P.PIDController6_N;
+
+  /* Sum: '<S17>/Sum' incorporates:
+   *  Integrator: '<S17>/Integrator'
+   */
+  rtb_Sum_ht = (Crane3D_DevDriv_B.ProportionalGain_c +
+                Crane3D_DevDriv_X.Integrator_CSTATE_a) +
+    Crane3D_DevDriv_B.FilterCoefficient_d;
+  if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
+    /* Gain: '<S15>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_g = Crane3D_DevDriv_P.PC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C3;
+
+    /* Gain: '<S15>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_m = Crane3D_DevDriv_P.DC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C3;
+
+    /* Gain: '<S18>/Proportional Gain' */
+    Crane3D_DevDriv_B.ProportionalGain_p = Crane3D_DevDriv_P.PC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C4;
+
+    /* Gain: '<S18>/Derivative Gain' */
+    Crane3D_DevDriv_B.DerivativeGain_cw = Crane3D_DevDriv_P.DC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C4;
+  }
+
+  /* Gain: '<S15>/Filter Coefficient' incorporates:
+   *  Integrator: '<S15>/Filter'
+   *  Sum: '<S15>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_j0 = (Crane3D_DevDriv_B.DerivativeGain_m -
+    Crane3D_DevDriv_X.Filter_CSTATE_ie) * Crane3D_DevDriv_P.PIDController4_N;
+
+  /* Sum: '<S15>/Sum' incorporates:
+   *  Integrator: '<S15>/Integrator'
+   */
+  rtb_Sum_d = (Crane3D_DevDriv_B.ProportionalGain_g +
+               Crane3D_DevDriv_X.Integrator_CSTATE_i) +
+    Crane3D_DevDriv_B.FilterCoefficient_j0;
+
+  /* Gain: '<S18>/Filter Coefficient' incorporates:
+   *  Integrator: '<S18>/Filter'
+   *  Sum: '<S18>/SumD'
+   */
+  Crane3D_DevDriv_B.FilterCoefficient_jx = (Crane3D_DevDriv_B.DerivativeGain_cw
+    - Crane3D_DevDriv_X.Filter_CSTATE_pq) * Crane3D_DevDriv_P.PIDController7_N;
+
+  /* Sum: '<S18>/Sum' incorporates:
+   *  Integrator: '<S18>/Integrator'
+   */
+  rtb_Sum_ac = (Crane3D_DevDriv_B.ProportionalGain_p +
+                Crane3D_DevDriv_X.Integrator_CSTATE_c) +
+    Crane3D_DevDriv_B.FilterCoefficient_jx;
+
+  /* MATLAB Function: '<S6>/GainDesch1' */
+  Crane3D_DevDriv_GainDesch(rtb_Sum_a, rtb_Sum_ht, rtb_Sum_d, rtb_Sum_ac,
+    Crane3D_DevDriv_B.Class, &Crane3D_DevDriv_B.sf_GainDesch1);
+
+  /* MATLAB Function: '<S1>/Enforce Soft Limits and Overflow' incorporates:
+   *  Constant: '<Root>/X_range'
+   *  Constant: '<Root>/Y_range '
+   */
+  x = Crane3D_DevDriv_B.XScale;
+  y = Crane3D_DevDriv_B.YScale;
+
+  /* MATLAB Function 'Controller/Enforce Soft Limits and Overflow': '<S5>:1' */
+  /* '<S5>:1:3' */
+  /* '<S5>:1:4' */
+  /* '<S5>:1:5' */
+  x_max = Crane3D_DevDriv_B.sf_GainDesch.Out;
+
+  /* '<S5>:1:6' */
+  x_min = Crane3D_DevDriv_B.sf_GainDesch1.Out;
+
+  /*  Deal with overflow - may not be the most appropriate place */
+  if ((Crane3D_DevDriv_B.XScale > 10.0) || (Crane3D_DevDriv_B.XScale < -10.0)) {
+    /* '<S5>:1:9' */
+    /* '<S5>:1:10' */
+    x = 0.0;
+  }
+
+  if ((Crane3D_DevDriv_B.YScale > 10.0) || (Crane3D_DevDriv_B.YScale < -10.0)) {
+    /* '<S5>:1:12' */
+    /* '<S5>:1:13' */
+    y = 0.0;
+  }
+
+  /*  Put in place soft boundaries on the borders */
+  if (x > Crane3D_DevDriv_P.xRange[1] - 0.08) {
+    /* '<S5>:1:17' */
+    /* '<S5>:1:18' */
+    if (Crane3D_DevDriv_B.sf_GainDesch.Out <= 0.0) {
+      x_max = Crane3D_DevDriv_B.sf_GainDesch.Out;
+    } else {
+      x_max = 0.0;
+    }
+  }
+
+  if (x < Crane3D_DevDriv_P.xRange[0] + 0.08) {
+    /* '<S5>:1:21' */
+    /* '<S5>:1:22' */
+    if (Crane3D_DevDriv_B.sf_GainDesch.Out >= 0.0) {
+      x_max = Crane3D_DevDriv_B.sf_GainDesch.Out;
+    } else {
+      x_max = 0.0;
+    }
+  }
+
+  if (y > Crane3D_DevDriv_P.yRange[1] - 0.08) {
+    /* '<S5>:1:26' */
+    /* '<S5>:1:27' */
+    if (Crane3D_DevDriv_B.sf_GainDesch1.Out <= 0.0) {
+      x_min = Crane3D_DevDriv_B.sf_GainDesch1.Out;
+    } else {
+      x_min = 0.0;
+    }
+  }
+
+  if (y < Crane3D_DevDriv_P.yRange[0] + 0.08) {
+    /* '<S5>:1:30' */
+    /* '<S5>:1:31' */
+    if (Crane3D_DevDriv_B.sf_GainDesch1.Out >= 0.0) {
+      x_min = Crane3D_DevDriv_B.sf_GainDesch1.Out;
+    } else {
+      x_min = 0.0;
+    }
+  }
+
+  /* End of MATLAB Function: '<S1>/Enforce Soft Limits and Overflow' */
+  if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
+    /* Gain: '<S11>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain = Crane3D_DevDriv_P.IC1x *
+      Crane3D_DevDriv_B.sf_GainSch.C1;
+
+    /* Gain: '<S12>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_l = Crane3D_DevDriv_P.IC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C2;
+
+    /* Gain: '<S13>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_o = Crane3D_DevDriv_P.IC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C3;
+
+    /* Gain: '<S14>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_lr = Crane3D_DevDriv_P.IC2x *
+      Crane3D_DevDriv_B.sf_GainSch.C4;
+
+    /* Gain: '<S15>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_n = Crane3D_DevDriv_P.IC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C3;
+
+    /* Gain: '<S16>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_g = Crane3D_DevDriv_P.IC1y *
+      Crane3D_DevDriv_B.sf_GainSch1.C1;
+
+    /* Gain: '<S17>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_m = Crane3D_DevDriv_P.IC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C2;
+
+    /* Gain: '<S18>/Integral Gain' */
+    Crane3D_DevDriv_B.IntegralGain_e = Crane3D_DevDriv_P.IC2y *
+      Crane3D_DevDriv_B.sf_GainSch1.C4;
 
     /* Level2 S-Function Block: '<S3>/PWM' (Crane3D_PWM) */
     {
@@ -345,60 +762,23 @@ void Crane3D_DevDriv_output(void)
     }
   }
 
-  /* Sum: '<S6>/Sum' incorporates:
-   *  Integrator: '<S6>/Integrator'
-   */
-  rtb_yerror = (Crane3D_DevDriv_B.ProportionalGain +
-                Crane3D_DevDriv_X.Integrator_CSTATE) +
-    Crane3D_DevDriv_B.FilterCoefficient;
-
-  /* Saturate: '<S6>/Saturate' */
-  if (rtb_yerror > Crane3D_DevDriv_P.PIDController_UpperSaturationLimit) {
-    rtb_yerror = Crane3D_DevDriv_P.PIDController_UpperSaturationLimit;
-  } else {
-    if (rtb_yerror < Crane3D_DevDriv_P.PIDController_LowerSaturationLimit) {
-      rtb_yerror = Crane3D_DevDriv_P.PIDController_LowerSaturationLimit;
-    }
-  }
-
-  /* End of Saturate: '<S6>/Saturate' */
-
-  /* Saturate: '<S3>/Saturation' */
-  if (rtb_yerror > Crane3D_DevDriv_P.Saturation_UpperSat) {
-    Crane3D_DevDriv_B.Saturation[0] = Crane3D_DevDriv_P.Saturation_UpperSat;
-  } else if (rtb_yerror < Crane3D_DevDriv_P.Saturation_LowerSat) {
-    Crane3D_DevDriv_B.Saturation[0] = Crane3D_DevDriv_P.Saturation_LowerSat;
-  } else {
-    Crane3D_DevDriv_B.Saturation[0] = rtb_yerror;
-  }
-
-  /* Sum: '<S7>/Sum' incorporates:
-   *  Integrator: '<S7>/Integrator'
-   */
-  rtb_yerror = (Crane3D_DevDriv_B.ProportionalGain_e +
-                Crane3D_DevDriv_X.Integrator_CSTATE_b) +
-    Crane3D_DevDriv_B.FilterCoefficient_m;
-
-  /* Saturate: '<S7>/Saturate' */
-  if (rtb_yerror > Crane3D_DevDriv_P.PIDController2_UpperSaturationLimit) {
-    rtb_yerror = Crane3D_DevDriv_P.PIDController2_UpperSaturationLimit;
-  } else {
-    if (rtb_yerror < Crane3D_DevDriv_P.PIDController2_LowerSaturationLimit) {
-      rtb_yerror = Crane3D_DevDriv_P.PIDController2_LowerSaturationLimit;
-    }
-  }
-
-  /* End of Saturate: '<S7>/Saturate' */
-
   /* Saturate: '<S3>/Saturation' incorporates:
    *  Constant: '<S1>/Constant'
    */
-  if (rtb_yerror > Crane3D_DevDriv_P.Saturation_UpperSat) {
+  if (x_max > Crane3D_DevDriv_P.Saturation_UpperSat) {
+    Crane3D_DevDriv_B.Saturation[0] = Crane3D_DevDriv_P.Saturation_UpperSat;
+  } else if (x_max < Crane3D_DevDriv_P.Saturation_LowerSat) {
+    Crane3D_DevDriv_B.Saturation[0] = Crane3D_DevDriv_P.Saturation_LowerSat;
+  } else {
+    Crane3D_DevDriv_B.Saturation[0] = x_max;
+  }
+
+  if (x_min > Crane3D_DevDriv_P.Saturation_UpperSat) {
     Crane3D_DevDriv_B.Saturation[1] = Crane3D_DevDriv_P.Saturation_UpperSat;
-  } else if (rtb_yerror < Crane3D_DevDriv_P.Saturation_LowerSat) {
+  } else if (x_min < Crane3D_DevDriv_P.Saturation_LowerSat) {
     Crane3D_DevDriv_B.Saturation[1] = Crane3D_DevDriv_P.Saturation_LowerSat;
   } else {
-    Crane3D_DevDriv_B.Saturation[1] = rtb_yerror;
+    Crane3D_DevDriv_B.Saturation[1] = x_min;
   }
 
   if (Crane3D_DevDriv_P.Constant_Value > Crane3D_DevDriv_P.Saturation_UpperSat)
@@ -411,6 +791,7 @@ void Crane3D_DevDriv_output(void)
     Crane3D_DevDriv_B.Saturation[2] = Crane3D_DevDriv_P.Constant_Value;
   }
 
+  /* End of Saturate: '<S3>/Saturation' */
   if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
     /* Level2 S-Function Block: '<S3>/LimitFlag' (Crane3D_LimitFlag) */
     {
@@ -554,17 +935,53 @@ void Crane3D_DevDriv_derivatives(void)
   XDot_Crane3D_DevDriv_T *_rtXdot;
   _rtXdot = ((XDot_Crane3D_DevDriv_T *) Crane3D_DevDriv_M->ModelData.derivs);
 
-  /* Derivatives for Integrator: '<S6>/Filter' */
-  _rtXdot->Filter_CSTATE = Crane3D_DevDriv_B.FilterCoefficient;
-
-  /* Derivatives for Integrator: '<S6>/Integrator' */
+  /* Derivatives for Integrator: '<S11>/Integrator' */
   _rtXdot->Integrator_CSTATE = Crane3D_DevDriv_B.IntegralGain;
 
-  /* Derivatives for Integrator: '<S7>/Filter' */
-  _rtXdot->Filter_CSTATE_g = Crane3D_DevDriv_B.FilterCoefficient_m;
+  /* Derivatives for Integrator: '<S11>/Filter' */
+  _rtXdot->Filter_CSTATE = Crane3D_DevDriv_B.FilterCoefficient;
 
-  /* Derivatives for Integrator: '<S7>/Integrator' */
-  _rtXdot->Integrator_CSTATE_b = Crane3D_DevDriv_B.IntegralGain_b;
+  /* Derivatives for Integrator: '<S12>/Integrator' */
+  _rtXdot->Integrator_CSTATE_n = Crane3D_DevDriv_B.IntegralGain_l;
+
+  /* Derivatives for Integrator: '<S12>/Filter' */
+  _rtXdot->Filter_CSTATE_g = Crane3D_DevDriv_B.FilterCoefficient_c;
+
+  /* Derivatives for Integrator: '<S13>/Integrator' */
+  _rtXdot->Integrator_CSTATE_e = Crane3D_DevDriv_B.IntegralGain_o;
+
+  /* Derivatives for Integrator: '<S13>/Filter' */
+  _rtXdot->Filter_CSTATE_i = Crane3D_DevDriv_B.FilterCoefficient_b;
+
+  /* Derivatives for Integrator: '<S14>/Integrator' */
+  _rtXdot->Integrator_CSTATE_l = Crane3D_DevDriv_B.IntegralGain_lr;
+
+  /* Derivatives for Integrator: '<S14>/Filter' */
+  _rtXdot->Filter_CSTATE_d = Crane3D_DevDriv_B.FilterCoefficient_j;
+
+  /* Derivatives for Integrator: '<S16>/Integrator' */
+  _rtXdot->Integrator_CSTATE_d = Crane3D_DevDriv_B.IntegralGain_g;
+
+  /* Derivatives for Integrator: '<S16>/Filter' */
+  _rtXdot->Filter_CSTATE_p = Crane3D_DevDriv_B.FilterCoefficient_e;
+
+  /* Derivatives for Integrator: '<S17>/Integrator' */
+  _rtXdot->Integrator_CSTATE_a = Crane3D_DevDriv_B.IntegralGain_m;
+
+  /* Derivatives for Integrator: '<S17>/Filter' */
+  _rtXdot->Filter_CSTATE_m = Crane3D_DevDriv_B.FilterCoefficient_d;
+
+  /* Derivatives for Integrator: '<S15>/Integrator' */
+  _rtXdot->Integrator_CSTATE_i = Crane3D_DevDriv_B.IntegralGain_n;
+
+  /* Derivatives for Integrator: '<S15>/Filter' */
+  _rtXdot->Filter_CSTATE_ie = Crane3D_DevDriv_B.FilterCoefficient_j0;
+
+  /* Derivatives for Integrator: '<S18>/Integrator' */
+  _rtXdot->Integrator_CSTATE_c = Crane3D_DevDriv_B.IntegralGain_e;
+
+  /* Derivatives for Integrator: '<S18>/Filter' */
+  _rtXdot->Filter_CSTATE_pq = Crane3D_DevDriv_B.FilterCoefficient_jx;
 }
 
 /* Model initialize function */
@@ -621,17 +1038,53 @@ void Crane3D_DevDriv_initialize(void)
       Crane3D_DevDriv_P.ThermFlagSource_Value[2];
   }
 
-  /* InitializeConditions for Integrator: '<S6>/Filter' */
-  Crane3D_DevDriv_X.Filter_CSTATE = Crane3D_DevDriv_P.Filter_IC;
-
-  /* InitializeConditions for Integrator: '<S6>/Integrator' */
+  /* InitializeConditions for Integrator: '<S11>/Integrator' */
   Crane3D_DevDriv_X.Integrator_CSTATE = Crane3D_DevDriv_P.Integrator_IC;
 
-  /* InitializeConditions for Integrator: '<S7>/Filter' */
-  Crane3D_DevDriv_X.Filter_CSTATE_g = Crane3D_DevDriv_P.Filter_IC_k;
+  /* InitializeConditions for Integrator: '<S11>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE = Crane3D_DevDriv_P.Filter_IC;
 
-  /* InitializeConditions for Integrator: '<S7>/Integrator' */
-  Crane3D_DevDriv_X.Integrator_CSTATE_b = Crane3D_DevDriv_P.Integrator_IC_j;
+  /* InitializeConditions for Integrator: '<S12>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_n = Crane3D_DevDriv_P.Integrator_IC_a;
+
+  /* InitializeConditions for Integrator: '<S12>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_g = Crane3D_DevDriv_P.Filter_IC_j;
+
+  /* InitializeConditions for Integrator: '<S13>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_e = Crane3D_DevDriv_P.Integrator_IC_f;
+
+  /* InitializeConditions for Integrator: '<S13>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_i = Crane3D_DevDriv_P.Filter_IC_m;
+
+  /* InitializeConditions for Integrator: '<S14>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_l = Crane3D_DevDriv_P.Integrator_IC_h;
+
+  /* InitializeConditions for Integrator: '<S14>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_d = Crane3D_DevDriv_P.Filter_IC_o;
+
+  /* InitializeConditions for Integrator: '<S16>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_d = Crane3D_DevDriv_P.Integrator_IC_c;
+
+  /* InitializeConditions for Integrator: '<S16>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_p = Crane3D_DevDriv_P.Filter_IC_a;
+
+  /* InitializeConditions for Integrator: '<S17>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_a = Crane3D_DevDriv_P.Integrator_IC_fc;
+
+  /* InitializeConditions for Integrator: '<S17>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_m = Crane3D_DevDriv_P.Filter_IC_c;
+
+  /* InitializeConditions for Integrator: '<S15>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_i = Crane3D_DevDriv_P.Integrator_IC_cx;
+
+  /* InitializeConditions for Integrator: '<S15>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_ie = Crane3D_DevDriv_P.Filter_IC_or;
+
+  /* InitializeConditions for Integrator: '<S18>/Integrator' */
+  Crane3D_DevDriv_X.Integrator_CSTATE_c = Crane3D_DevDriv_P.Integrator_IC_a2;
+
+  /* InitializeConditions for Integrator: '<S18>/Filter' */
+  Crane3D_DevDriv_X.Filter_CSTATE_pq = Crane3D_DevDriv_P.Filter_IC_ms;
 
   /* SystemInitialize for MATLAB Function: '<Root>/Select most convenient path' */
   Crane3D_DevDriv_DW.WP_Index = 1.0;
@@ -846,20 +1299,25 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
   Crane3D_DevDriv_M->Timing.stepSize1 = 0.01;
 
   /* External mode info */
-  Crane3D_DevDriv_M->Sizes.checksums[0] = (683255587U);
-  Crane3D_DevDriv_M->Sizes.checksums[1] = (516352514U);
-  Crane3D_DevDriv_M->Sizes.checksums[2] = (2244256495U);
-  Crane3D_DevDriv_M->Sizes.checksums[3] = (3693446197U);
+  Crane3D_DevDriv_M->Sizes.checksums[0] = (3412237169U);
+  Crane3D_DevDriv_M->Sizes.checksums[1] = (210214119U);
+  Crane3D_DevDriv_M->Sizes.checksums[2] = (1411798281U);
+  Crane3D_DevDriv_M->Sizes.checksums[3] = (3613856210U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[3];
+    static const sysRanDType *systemRan[8];
     Crane3D_DevDriv_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
     systemRan[1] = &rtAlwaysEnabled;
     systemRan[2] = &rtAlwaysEnabled;
+    systemRan[3] = &rtAlwaysEnabled;
+    systemRan[4] = &rtAlwaysEnabled;
+    systemRan[5] = &rtAlwaysEnabled;
+    systemRan[6] = &rtAlwaysEnabled;
+    systemRan[7] = &rtAlwaysEnabled;
     rteiSetModelMappingInfoPtr(Crane3D_DevDriv_M->extModeInfo,
       &Crane3D_DevDriv_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(Crane3D_DevDriv_M->extModeInfo,
@@ -894,14 +1352,38 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
     Crane3D_DevDriv_B.YScale = 0.0;
     Crane3D_DevDriv_B.XAngleScale = 0.0;
     Crane3D_DevDriv_B.YAngleScale = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain = 0.0;
     Crane3D_DevDriv_B.DerivativeGain = 0.0;
     Crane3D_DevDriv_B.FilterCoefficient = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_j = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_j = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_c = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_h = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_jh = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_b = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_f = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_k = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_j = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_o = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_c = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_e = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_c = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_p = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_d = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_g = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_m = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_j0 = 0.0;
+    Crane3D_DevDriv_B.ProportionalGain_p = 0.0;
+    Crane3D_DevDriv_B.DerivativeGain_cw = 0.0;
+    Crane3D_DevDriv_B.FilterCoefficient_jx = 0.0;
     Crane3D_DevDriv_B.IntegralGain = 0.0;
-    Crane3D_DevDriv_B.ProportionalGain = 0.0;
-    Crane3D_DevDriv_B.DerivativeGain_o = 0.0;
-    Crane3D_DevDriv_B.FilterCoefficient_m = 0.0;
-    Crane3D_DevDriv_B.IntegralGain_b = 0.0;
-    Crane3D_DevDriv_B.ProportionalGain_e = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_l = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_o = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_lr = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_n = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_g = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_m = 0.0;
+    Crane3D_DevDriv_B.IntegralGain_e = 0.0;
     Crane3D_DevDriv_B.PWM[0] = 0.0;
     Crane3D_DevDriv_B.PWM[1] = 0.0;
     Crane3D_DevDriv_B.PWM[2] = 0.0;
@@ -939,8 +1421,19 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
     Crane3D_DevDriv_B.ThermFlagSource[2] = 0.0;
     Crane3D_DevDriv_B.x = 0.0;
     Crane3D_DevDriv_B.y = 0.0;
+    Crane3D_DevDriv_B.Class = 0.0;
     Crane3D_DevDriv_B.x_l = 0.0;
     Crane3D_DevDriv_B.y_f = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch1.C1 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch1.C2 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch1.C3 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch1.C4 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch.C1 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch.C2 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch.C3 = 0.0;
+    Crane3D_DevDriv_B.sf_GainSch.C4 = 0.0;
+    Crane3D_DevDriv_B.sf_GainDesch1.Out = 0.0;
+    Crane3D_DevDriv_B.sf_GainDesch.Out = 0.0;
   }
 
   /* parameters */
@@ -2012,15 +2505,15 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
   }
 
   /* Initialize Sizes */
-  Crane3D_DevDriv_M->Sizes.numContStates = (4);/* Number of continuous states */
+  Crane3D_DevDriv_M->Sizes.numContStates = (16);/* Number of continuous states */
   Crane3D_DevDriv_M->Sizes.numPeriodicContStates = (0);/* Number of periodic continuous states */
   Crane3D_DevDriv_M->Sizes.numY = (0); /* Number of model outputs */
   Crane3D_DevDriv_M->Sizes.numU = (0); /* Number of model inputs */
   Crane3D_DevDriv_M->Sizes.sysDirFeedThru = (0);/* The model is not direct feedthrough */
   Crane3D_DevDriv_M->Sizes.numSampTimes = (2);/* Number of sample times */
-  Crane3D_DevDriv_M->Sizes.numBlocks = (57);/* Number of blocks */
-  Crane3D_DevDriv_M->Sizes.numBlockIO = (33);/* Number of block outputs */
-  Crane3D_DevDriv_M->Sizes.numBlockPrms = (132);/* Sum of parameter "widths" */
+  Crane3D_DevDriv_M->Sizes.numBlocks = (113);/* Number of blocks */
+  Crane3D_DevDriv_M->Sizes.numBlockIO = (68);/* Number of block outputs */
+  Crane3D_DevDriv_M->Sizes.numBlockPrms = (165);/* Sum of parameter "widths" */
   return Crane3D_DevDriv_M;
 }
 
