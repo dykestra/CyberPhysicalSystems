@@ -1,4 +1,4 @@
-function [targets, waypoints] = path_planning( Grid )
+function [waypoints] = path_planning( Grid )
 % given the obstacle course as a grid, return a list of targets and full
 % list of waypoints
 
@@ -53,6 +53,17 @@ waypoints = [waypoints, find_nearest_obstacles(waypoints, Grid)];
 
 targets(:) = targets(:)-1;
 waypoints(:) = waypoints(:)-1;
+
+is_target = zeros(size(waypoints,1),1);
+for i=1:size(waypoints,1)
+    for j=1:size(targets,1)
+        if waypoints(i,1:2)==targets(j,:)
+            is_target(i) = 1;
+        end
+    end
+end
+
+waypoints = [waypoints is_target];
 
 end
 
