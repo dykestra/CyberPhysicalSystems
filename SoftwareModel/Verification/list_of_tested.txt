@@ -1,0 +1,650 @@
+scenario_frm_10_10.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_10_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_11_11.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_11_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_12_12.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_12_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_13_13.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_13_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_14_14.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_14_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_15_15.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_15_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_16_16.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_16_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_17_17.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_17_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_18_18.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_18_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_19_19.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_19_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_20_20.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_20_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_21_21.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_21_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_22_22.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_22_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_23_23.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_23_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_24_24.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_24_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_25_25.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_25_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_26_26.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_26_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_27_27.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_27_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_28_28.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_28_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_29_29.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_29_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_30_30.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_30_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_31_31.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_31_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_32_32.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_32_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_33_33.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_33_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_34_34.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_34_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_35_35.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_35_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_36_36.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_36_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_37_37.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_37_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_38_38.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_38_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_39_39.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_39_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_40_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_40_40.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_41_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_41_41.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_42_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_42_42.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_43_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_43_43.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_44_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_44_44.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_45_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_45_45.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_46_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_46_46.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_47_4.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_47_47.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_10.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_11.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_12.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_13.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_14.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_15.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_16.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_17.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_18.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_19.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_20.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_21.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_22.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_23.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_24.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_25.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_26.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_27.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_28.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_29.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_30.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_31.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_32.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_33.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_34.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_35.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_36.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_37.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_38.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_39.csv
+
+properties_satisfied =
+
+     1
+
+scenario_frm_4_4.csv
+Index exceeds matrix dimensions.
+
+Error in path_to_waypoints (line 10)
+prev_dir = path(2,:) - path(1,:); % last direction [xdir, ydir]
+
+Error in path_planning (line 34)
+    waypoints = vertcat(waypoints, path_to_waypoints(min_path,0));
+
+Error in RunModelVerification (line 14)
+[targets,waypoints] = path_planning(MAP);
+
+Error in runVerificationSim (line 33)
+    RunModelVerification(InputPath, OutputPath, ModelName)

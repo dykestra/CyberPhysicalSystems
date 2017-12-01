@@ -37,7 +37,7 @@ min_dist_t = 0;
 min_dist_o = 0;
 %    - obstacles: max distance from a target        max_dist_ot
 %      - setting to -1 allows obstacles to be placed freely
-max_dist_ot = 5;
+max_dist_ot = -1;%5;
 % Number of targets and obstacles:
 max_targets = 3;
 max_obstacles = 3;

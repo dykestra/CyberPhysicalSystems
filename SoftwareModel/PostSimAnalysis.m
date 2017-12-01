@@ -111,17 +111,17 @@ xlabel('Time');
 
 
 
-% Scatterplot of x and y, with time as colour input
-% works as: scatter(x, y, circle_size, colour, 'filled')
-colours = set_colour( TrajX(:,1) );
+%% Scatterplot of x and y, with time as colour input
+%% works as: scatter(x, y, circle_size, colour, 'filled')
+%colours = set_colour( TrajX(:,1) );
 
-% Plotting a scatterplot with varying colours
-figure(5)
-sz = 10;
-scatter(TrajX(:,2), TrajY(:,2), sz, colours, 'filled')
-xlim([0 50])
-ylim([0 50])
-title('Payload movement in x-y space')
+%% Plotting a scatterplot with varying colours
+%figure(5)
+%sz = 10;
+%scatter(TrajX(:,2), TrajY(:,2), sz, colours, 'filled')
+%xlim([0 50])
+%ylim([0 50])
+%title('Payload movement in x-y space')
 
 end
 

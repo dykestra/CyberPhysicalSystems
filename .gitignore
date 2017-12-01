@@ -6,3 +6,5 @@ SoftwareModel/Output_Fig/Cart Analysis.jpg
 SoftwareModel/Output_Fig/XY Space.jpg
 *.jpg
 SoftwareModel/MontecarloScenarios/Input/*.csv
+SoftwareModel/Verification/*.csv
+*.*~

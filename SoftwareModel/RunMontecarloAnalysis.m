@@ -6,7 +6,8 @@ clc
 montecarlo_inputs;
 clear variables 
 
-ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
+ModelName = 'Simscape_crane_software_model_SingleContr_R2016b';%'Simscape_crane_software_model_RealSensors_R2016b';
+%ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
 
 %% Loop around all files
 files = dir('MontecarloScenarios/Input/*.csv');
@@ -20,8 +21,8 @@ for file = files'
     % - so the first scenario will be opened as usual, while others not, as
     %   there is not enough time to show them anyway before new scenario is
     %   run -- this also aids Matlab stability on Ubuntu
-    %set_param(ModelName,'SimMechanicsOpenEditorOnUpdate','off');
+    set_param(ModelName,'SimMechanicsOpenEditorOnUpdate','off');
 end
 
 % Switch Mechanics editor opening back on
-%set_param(ModelName,'SimMechanicsOpenEditorOnUpdate','on');
+set_param(ModelName,'SimMechanicsOpenEditorOnUpdate','on');
