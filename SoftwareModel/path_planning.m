@@ -1,4 +1,4 @@
-function [targets, waypoints] = path_planning( Grid )
+function [waypoints] = path_planning( Grid )
 % given the obstacle course as a grid, return a list of targets and full
 % list of waypoints
 
@@ -11,6 +11,8 @@ waypoints = [1,1];
 
 remaining_targets = targets;
 
+heat_map = compute_heat_map(Grid);
+
 for r=1:n_targets
     % find min cost path from curr position
     min_path = [];
@@ -22,7 +24,7 @@ for r=1:n_targets
         t_grid(Grid==0) = 2;
         t_grid(remaining_targets(t,1), remaining_targets(t,2)) = 0;
 
-        t_path = A_Star(t_grid,0);
+        t_path = A_Star(t_grid, 0, 0, heat_map);
         t_cost = calculate_cost(t_path);
         if min_path_cost > t_cost
             min_path_cost = t_cost;
@@ -40,8 +42,12 @@ for r=1:n_targets
     Grid(visited_target(1), visited_target(2)) = 1;
     
     % remove visited target from remaining_targets
-    ind = remaining_targets~=visited_target;
-    remaining_targets( ~any(ind,2), : ) = [];
+    for o=1:size(remaining_targets,1)
+        if visited_target == remaining_targets(o,:)
+            remaining_targets(o,:) = [];
+            break
+        end
+    end
    
 end
 
@@ -49,6 +55,17 @@ waypoints = [waypoints, find_nearest_obstacles(waypoints, Grid)];
 
 targets(:) = targets(:)-1;
 waypoints(:) = waypoints(:)-1;
+
+is_target = zeros(size(waypoints,1),1);
+for i=1:size(waypoints,1)
+    for j=1:size(targets,1)
+        if waypoints(i,1:2)==targets(j,:)
+            is_target(i) = 1;
+        end
+    end
+end
+
+waypoints = [waypoints is_target];
 
 end
 

@@ -11,6 +11,8 @@ waypoints = [1,1];
 
 remaining_targets = targets;
 
+heat_map = compute_heat_map(Grid);
+
 for r=1:n_targets
     % find min cost path from curr position
     min_path = [];
@@ -22,7 +24,7 @@ for r=1:n_targets
         t_grid(Grid==0) = 2;
         t_grid(remaining_targets(t,1), remaining_targets(t,2)) = 0;
 
-        t_path = A_Star(t_grid,0);
+        t_path = A_Star(t_grid, 0, 0, heat_map);
         t_cost = calculate_cost(t_path);
         if min_path_cost > t_cost
             min_path_cost = t_cost;
