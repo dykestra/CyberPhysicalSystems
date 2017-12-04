@@ -11,7 +11,9 @@ tic;
 
 run('setup.m');
 MAP = txt2Map(InputFile);
-[targets,waypoints] = path_planning(MAP);
+%[targets,waypoints] = path_planning(MAP);
+[waypoints] = path_planning(MAP);
+targets = waypoints(waypoints(:,5)==1,:); %getting the actual targets only
 
 ElapsedTimePP = toc;
 
@@ -54,3 +56,4 @@ end
 % Switch warnings relating to inputs and outputs not connected back on
 warning('on','Simulink:Engine:InputNotConnected');
 warning('on','Simulink:Engine:OutputNotConnected');
+end
