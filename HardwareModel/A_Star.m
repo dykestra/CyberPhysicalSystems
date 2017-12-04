@@ -1,6 +1,9 @@
-function [ Path ] = A_Star( Grid,  plotgrid, obstacle_padding )
+function [ Path ] = A_Star( Grid,  plotgrid, obstacle_padding, heat_map )
 % Given a 2D matrix Grid with current position, target and obstacles, 
 % generates a Path to the target as a list of coordinates
+if nargin < 4
+    heat_map = compute_heat_map(Grid);
+end
 if nargin < 3
     obstacle_padding = 1;
 end
@@ -82,7 +85,7 @@ NoPath=1;
 
 while((xNode ~= xTarget || yNode ~= yTarget) && NoPath == 1)
 %  plot(xNode+.5,yNode+.5,'go');
- exp_array=expand_array(xNode,yNode,path_cost,xTarget,yTarget,CLOSED,MAX_X,MAX_Y, compute_heat_map(Grid));
+ exp_array=expand_array(xNode,yNode,path_cost,xTarget,yTarget,CLOSED,MAX_X,MAX_Y, heat_map);
  exp_count=size(exp_array,1);
  %UPDATE LIST OPEN WITH THE SUCCESSOR NODES
  %OPEN LIST FORMAT

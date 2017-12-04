@@ -11,9 +11,9 @@ tic;
 
 run('setup.m');
 MAP = txt2Map(InputFile);
-[targets,waypoints] = path_planning(MAP);
+[waypoints] = path_planning(MAP);
 
-ElapsedTimePP = toc;
+ElapsedTimePP = toc
 
 %% Define PIDs parameters for model
 PTraj = 3.0;
