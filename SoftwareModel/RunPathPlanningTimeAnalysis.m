@@ -3,8 +3,8 @@ close all
 clc
 
 %% Generate Montecarlo Scenarios
-NUM_TARGETS = 6;
-NUM_OBSTACLES = 6;
+NUM_TARGETS = 3;
+NUM_OBSTACLES = 100;
 NUMBER_OF_SIMULATIONS = 50;
 montecarlo_function(NUM_TARGETS,NUM_OBSTACLES,NUMBER_OF_SIMULATIONS);
 

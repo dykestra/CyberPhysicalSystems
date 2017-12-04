@@ -4,7 +4,7 @@ function RunPathPlanningTimeAnalysis(InputFile,OutputFile)
 
     run('setup.m');
     MAP = txt2Map(InputFile);
-    [targets,waypoints] = path_planning(MAP);
+    [waypoints] = path_planning(MAP);
 
     ElapsedTimePP = toc;
 
