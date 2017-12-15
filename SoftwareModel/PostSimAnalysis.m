@@ -48,7 +48,8 @@ xlim([0 50])
 ylim([0 50])
 xlabel('x');
 ylabel('y');
-saveas(fig,char( strcat(string(OutputPath) + '/XY Space.jpg') ));
+%saveas(fig,char( strcat(string(OutputPath) + '/XY Space.jpg') ));
+saveas(fig,char( strcat(OutputPath,'/XY Space.jpg') ));
 
 %% Further Analyses - Jukka
 fig = figure(2);
@@ -76,7 +77,8 @@ subplot(2,2,4)
 plot(CartdY(:,1),CartdY(:,2));
 title('dy values over time')
 xlabel('Time');
-saveas(fig,char( strcat(string(OutputPath),'/Cart Analysis.jpg') ));
+%saveas(fig,char( strcat(string(OutputPath),'/Cart Analysis.jpg') ));
+saveas(fig,char( strcat(OutputPath,'/Cart Analysis.jpg') ));
 
 
 % Figures of the angles

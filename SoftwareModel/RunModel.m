@@ -29,7 +29,6 @@ options = simset('SrcWorkspace','current','ReturnWorkspaceOutputs','on');
 simout = sim(Model,[],options);
 
 %% Score run & Post simulation analysis
-score = getScore(simout, obstacles_csv, targets_csv)
 TrajX = simout.get('TrajX');
 TrajY = simout.get('TrajY');
 CartX = simout.get('CartX');
@@ -40,6 +39,18 @@ AngleX = simout.get('AngleX');
 AngleY = simout.get('AngleY');
 AngledX = simout.get('AngledX');
 AngledY = simout.get('AngledY');
+
+simout_b.Time = TrajX(:,1);
+simout_b.CartX = CartX;
+simout_b.CartY = CartY;
+simout_b.TrajX = TrajX;
+simout_b.TrajY = TrajY;
+simout_b.AngleX = AngleX;
+simout_b.AngleY = AngleY;
+simout_b.DesX = simout.get('DesiredX');
+simout_b.DesY = simout.get('DesiredY');
+
+score = getScore(simout_b, obstacles_csv, targets_csv, ElapsedTimePP)
 
 PostSimAnalysis(OutputPath, MAP, waypoints, TrajX, TrajY, CartX, CartY, CartdX, CartdY, AngleX, AngleY, AngledX, AngledY, simout.get('xRange'), simout.get('yRange'), simout.get('DesiredX'), simout.get('DesiredY'));
 
