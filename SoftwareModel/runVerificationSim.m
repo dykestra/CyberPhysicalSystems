@@ -20,7 +20,7 @@ clear variables
 %ModelName = 'Simscape_crane_software_model_SingleContr_R2016b';%'Simscape_crane_software_model_RealSensors_R2016b';
 ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
 orig_stop_time = '180';%get_param(ModelName, 'StopTime');
-set_param(ModelName, 'StopTime', '30');
+set_param(ModelName, 'StopTime', '80');
 
 
 %% Loop around all files

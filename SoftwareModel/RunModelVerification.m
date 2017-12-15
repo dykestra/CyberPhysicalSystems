@@ -15,7 +15,7 @@ MAP = txt2Map(InputFile);
 [waypoints] = path_planning(MAP);
 targets = waypoints(waypoints(:,5)==1,:); %getting the actual targets only
 
-ElapsedTimePP = toc;
+ElapsedTimePP = toc
 
 %% Define PIDs parameters for model
 PTraj = 3.0;
@@ -25,6 +25,23 @@ DTraj = 0.3;
 POsc = 0.9;
 IOsc = 0;
 DOsc = 0.01;
+
+% PARAMETERS ADDED FROM LATEST CONTROLLER WITH HW MODEL
+PC1x = 2.0;
+IC1x = 0.1;
+DC1x = 0.3;
+
+PC2x = 3.5;
+IC2x = 0.3;
+DC2x = 0.3;
+
+PC1y = 2.0;
+IC1y = 0.1;
+DC1y = 0.3;
+
+PC2y = 3.5;
+IC2y = 0.3;
+DC2y = 0.3;
 
 %% Run Model
 options = simset('SrcWorkspace','current','ReturnWorkspaceOutputs','on');
