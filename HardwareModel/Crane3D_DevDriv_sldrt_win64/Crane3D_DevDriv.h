@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.232
+ * Model version              : 1.234
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Dec 01 15:43:34 2017
+ * C source code generated on : Mon Dec 18 17:45:09 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1024,16 +1024,22 @@ struct P_Crane3D_DevDriv_T_ {
                                         * Referenced by: '<S16>/Derivative Gain'
                                         */
   real_T DC2x;                         /* Variable: DC2x
-                                        * Referenced by:
-                                        *   '<S12>/Derivative Gain'
-                                        *   '<S13>/Derivative Gain'
-                                        *   '<S14>/Derivative Gain'
+                                        * Referenced by: '<S12>/Derivative Gain'
                                         */
   real_T DC2y;                         /* Variable: DC2y
-                                        * Referenced by:
-                                        *   '<S15>/Derivative Gain'
-                                        *   '<S17>/Derivative Gain'
-                                        *   '<S18>/Derivative Gain'
+                                        * Referenced by: '<S17>/Derivative Gain'
+                                        */
+  real_T DC3x;                         /* Variable: DC3x
+                                        * Referenced by: '<S13>/Derivative Gain'
+                                        */
+  real_T DC3y;                         /* Variable: DC3y
+                                        * Referenced by: '<S15>/Derivative Gain'
+                                        */
+  real_T DC4x;                         /* Variable: DC4x
+                                        * Referenced by: '<S14>/Derivative Gain'
+                                        */
+  real_T DC4y;                         /* Variable: DC4y
+                                        * Referenced by: '<S18>/Derivative Gain'
                                         */
   real_T IC1x;                         /* Variable: IC1x
                                         * Referenced by: '<S11>/Integral Gain'
@@ -1042,16 +1048,22 @@ struct P_Crane3D_DevDriv_T_ {
                                         * Referenced by: '<S16>/Integral Gain'
                                         */
   real_T IC2x;                         /* Variable: IC2x
-                                        * Referenced by:
-                                        *   '<S12>/Integral Gain'
-                                        *   '<S13>/Integral Gain'
-                                        *   '<S14>/Integral Gain'
+                                        * Referenced by: '<S12>/Integral Gain'
                                         */
   real_T IC2y;                         /* Variable: IC2y
-                                        * Referenced by:
-                                        *   '<S15>/Integral Gain'
-                                        *   '<S17>/Integral Gain'
-                                        *   '<S18>/Integral Gain'
+                                        * Referenced by: '<S17>/Integral Gain'
+                                        */
+  real_T IC3x;                         /* Variable: IC3x
+                                        * Referenced by: '<S13>/Integral Gain'
+                                        */
+  real_T IC3y;                         /* Variable: IC3y
+                                        * Referenced by: '<S15>/Integral Gain'
+                                        */
+  real_T IC4x;                         /* Variable: IC4x
+                                        * Referenced by: '<S14>/Integral Gain'
+                                        */
+  real_T IC4y;                         /* Variable: IC4y
+                                        * Referenced by: '<S18>/Integral Gain'
                                         */
   real_T PC1x;                         /* Variable: PC1x
                                         * Referenced by: '<S11>/Proportional Gain'
@@ -1060,18 +1072,24 @@ struct P_Crane3D_DevDriv_T_ {
                                         * Referenced by: '<S16>/Proportional Gain'
                                         */
   real_T PC2x;                         /* Variable: PC2x
-                                        * Referenced by:
-                                        *   '<S12>/Proportional Gain'
-                                        *   '<S13>/Proportional Gain'
-                                        *   '<S14>/Proportional Gain'
+                                        * Referenced by: '<S12>/Proportional Gain'
                                         */
   real_T PC2y;                         /* Variable: PC2y
-                                        * Referenced by:
-                                        *   '<S15>/Proportional Gain'
-                                        *   '<S17>/Proportional Gain'
-                                        *   '<S18>/Proportional Gain'
+                                        * Referenced by: '<S17>/Proportional Gain'
                                         */
-  real_T waypoints[45];                /* Variable: waypoints
+  real_T PC3x;                         /* Variable: PC3x
+                                        * Referenced by: '<S13>/Proportional Gain'
+                                        */
+  real_T PC3y;                         /* Variable: PC3y
+                                        * Referenced by: '<S15>/Proportional Gain'
+                                        */
+  real_T PC4x;                         /* Variable: PC4x
+                                        * Referenced by: '<S14>/Proportional Gain'
+                                        */
+  real_T PC4y;                         /* Variable: PC4y
+                                        * Referenced by: '<S18>/Proportional Gain'
+                                        */
+  real_T waypoints[100];               /* Variable: waypoints
                                         * Referenced by: '<Root>/Constant'
                                         */
   real_T xRange[2];                    /* Variable: xRange

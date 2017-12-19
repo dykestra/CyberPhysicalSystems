@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.232
+ * Model version              : 1.234
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Dec 01 15:43:34 2017
+ * C source code generated on : Mon Dec 18 17:45:09 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -360,15 +360,15 @@ void Crane3D_DevDriv_output(void)
 
     /* '<S4>:1:12' */
     y = 0.365;
-    if (Crane3D_DevDriv_DW.WP_Index <= 9.0) {
+    if (Crane3D_DevDriv_DW.WP_Index <= 20.0) {
       /* '<S4>:1:13' */
       /* '<S4>:1:14' */
       x = Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index - 1] /
         100.0;
 
       /* '<S4>:1:15' */
-      y = Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 8] /
-        100.0;
+      y = Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 19]
+        / 100.0;
 
       /*     %% Establish boundary conditions and controller class */
       /* '<S4>:1:18' */
@@ -390,16 +390,16 @@ void Crane3D_DevDriv_output(void)
       /* coordinates. */
       /*    Copyright 2009-2010 The MathWorks, Inc. */
       a = x - Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index +
-        17];
+        39];
       b_a = y - Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index
-        + 26];
+        + 59];
       if (sqrt(a * a + b_a * b_a) < 0.1) {
         /* '<S4>:1:24' */
         /* '<S4>:1:25' */
         Crane3D_DevDriv_B.Class = 3.0;
       }
 
-      if (Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 35]
+      if (Crane3D_DevDriv_P.waypoints[(int32_T)Crane3D_DevDriv_DW.WP_Index + 79]
           == 1.0) {
         /* '<S4>:1:28' */
         /* '<S4>:1:29' */
@@ -436,7 +436,7 @@ void Crane3D_DevDriv_output(void)
         /* '<S4>:1:42' */
         /* '<S4>:1:43' */
         Crane3D_DevDriv_DW.WP_Index++;
-        if (Crane3D_DevDriv_DW.WP_Index > 9.0) {
+        if (Crane3D_DevDriv_DW.WP_Index > 20.0) {
           /* '<S4>:1:44' */
           /* '<S4>:1:45' */
           Crane3D_DevDriv_DW.WP_Index--;
@@ -502,19 +502,19 @@ void Crane3D_DevDriv_output(void)
     Crane3D_DevDriv_B.FilterCoefficient_c;
   if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
     /* Gain: '<S13>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain_h = Crane3D_DevDriv_P.PC2x *
+    Crane3D_DevDriv_B.ProportionalGain_h = Crane3D_DevDriv_P.PC3x *
       Crane3D_DevDriv_B.sf_GainSch.C3;
 
     /* Gain: '<S13>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain_jh = Crane3D_DevDriv_P.DC2x *
+    Crane3D_DevDriv_B.DerivativeGain_jh = Crane3D_DevDriv_P.DC3x *
       Crane3D_DevDriv_B.sf_GainSch.C3;
 
     /* Gain: '<S14>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain_f = Crane3D_DevDriv_P.PC2x *
+    Crane3D_DevDriv_B.ProportionalGain_f = Crane3D_DevDriv_P.PC4x *
       Crane3D_DevDriv_B.sf_GainSch.C4;
 
     /* Gain: '<S14>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain_k = Crane3D_DevDriv_P.DC2x *
+    Crane3D_DevDriv_B.DerivativeGain_k = Crane3D_DevDriv_P.DC4x *
       Crane3D_DevDriv_B.sf_GainSch.C4;
   }
 
@@ -603,19 +603,19 @@ void Crane3D_DevDriv_output(void)
     Crane3D_DevDriv_B.FilterCoefficient_d;
   if (rtmIsMajorTimeStep(Crane3D_DevDriv_M)) {
     /* Gain: '<S15>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain_g = Crane3D_DevDriv_P.PC2y *
+    Crane3D_DevDriv_B.ProportionalGain_g = Crane3D_DevDriv_P.PC3y *
       Crane3D_DevDriv_B.sf_GainSch1.C3;
 
     /* Gain: '<S15>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain_m = Crane3D_DevDriv_P.DC2y *
+    Crane3D_DevDriv_B.DerivativeGain_m = Crane3D_DevDriv_P.DC3y *
       Crane3D_DevDriv_B.sf_GainSch1.C3;
 
     /* Gain: '<S18>/Proportional Gain' */
-    Crane3D_DevDriv_B.ProportionalGain_p = Crane3D_DevDriv_P.PC2y *
+    Crane3D_DevDriv_B.ProportionalGain_p = Crane3D_DevDriv_P.PC4y *
       Crane3D_DevDriv_B.sf_GainSch1.C4;
 
     /* Gain: '<S18>/Derivative Gain' */
-    Crane3D_DevDriv_B.DerivativeGain_cw = Crane3D_DevDriv_P.DC2y *
+    Crane3D_DevDriv_B.DerivativeGain_cw = Crane3D_DevDriv_P.DC4y *
       Crane3D_DevDriv_B.sf_GainSch1.C4;
   }
 
@@ -732,15 +732,15 @@ void Crane3D_DevDriv_output(void)
       Crane3D_DevDriv_B.sf_GainSch.C2;
 
     /* Gain: '<S13>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain_o = Crane3D_DevDriv_P.IC2x *
+    Crane3D_DevDriv_B.IntegralGain_o = Crane3D_DevDriv_P.IC3x *
       Crane3D_DevDriv_B.sf_GainSch.C3;
 
     /* Gain: '<S14>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain_lr = Crane3D_DevDriv_P.IC2x *
+    Crane3D_DevDriv_B.IntegralGain_lr = Crane3D_DevDriv_P.IC4x *
       Crane3D_DevDriv_B.sf_GainSch.C4;
 
     /* Gain: '<S15>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain_n = Crane3D_DevDriv_P.IC2y *
+    Crane3D_DevDriv_B.IntegralGain_n = Crane3D_DevDriv_P.IC3y *
       Crane3D_DevDriv_B.sf_GainSch1.C3;
 
     /* Gain: '<S16>/Integral Gain' */
@@ -752,7 +752,7 @@ void Crane3D_DevDriv_output(void)
       Crane3D_DevDriv_B.sf_GainSch1.C2;
 
     /* Gain: '<S18>/Integral Gain' */
-    Crane3D_DevDriv_B.IntegralGain_e = Crane3D_DevDriv_P.IC2y *
+    Crane3D_DevDriv_B.IntegralGain_e = Crane3D_DevDriv_P.IC4y *
       Crane3D_DevDriv_B.sf_GainSch1.C4;
 
     /* Level2 S-Function Block: '<S3>/PWM' (Crane3D_PWM) */
@@ -1294,15 +1294,15 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
     Crane3D_DevDriv_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(Crane3D_DevDriv_M, 120.0);
+  rtmSetTFinal(Crane3D_DevDriv_M, 60.0);
   Crane3D_DevDriv_M->Timing.stepSize0 = 0.01;
   Crane3D_DevDriv_M->Timing.stepSize1 = 0.01;
 
   /* External mode info */
-  Crane3D_DevDriv_M->Sizes.checksums[0] = (3412237169U);
-  Crane3D_DevDriv_M->Sizes.checksums[1] = (210214119U);
-  Crane3D_DevDriv_M->Sizes.checksums[2] = (1411798281U);
-  Crane3D_DevDriv_M->Sizes.checksums[3] = (3613856210U);
+  Crane3D_DevDriv_M->Sizes.checksums[0] = (2457036737U);
+  Crane3D_DevDriv_M->Sizes.checksums[1] = (1691281498U);
+  Crane3D_DevDriv_M->Sizes.checksums[2] = (3289858025U);
+  Crane3D_DevDriv_M->Sizes.checksums[3] = (1057960823U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -2513,7 +2513,7 @@ RT_MODEL_Crane3D_DevDriv_T *Crane3D_DevDriv(void)
   Crane3D_DevDriv_M->Sizes.numSampTimes = (2);/* Number of sample times */
   Crane3D_DevDriv_M->Sizes.numBlocks = (113);/* Number of blocks */
   Crane3D_DevDriv_M->Sizes.numBlockIO = (68);/* Number of block outputs */
-  Crane3D_DevDriv_M->Sizes.numBlockPrms = (165);/* Sum of parameter "widths" */
+  Crane3D_DevDriv_M->Sizes.numBlockPrms = (232);/* Sum of parameter "widths" */
   return Crane3D_DevDriv_M;
 }
 

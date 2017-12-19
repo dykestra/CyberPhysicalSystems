@@ -7,9 +7,9 @@
  *
  * Code generation for model "Crane3D_DevDriv".
  *
- * Model version              : 1.232
+ * Model version              : 1.234
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Fri Dec 01 15:43:34 2017
+ * C source code generated on : Mon Dec 18 17:45:09 2017
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,67 +23,89 @@
 
 /* Block parameters (auto storage) */
 P_Crane3D_DevDriv_T Crane3D_DevDriv_P = {
-  0.3,                                 /* Variable: DC1x
+  0.2,                                 /* Variable: DC1x
                                         * Referenced by: '<S11>/Derivative Gain'
                                         */
-  0.3,                                 /* Variable: DC1y
+  0.2,                                 /* Variable: DC1y
                                         * Referenced by: '<S16>/Derivative Gain'
                                         */
   0.3,                                 /* Variable: DC2x
-                                        * Referenced by:
-                                        *   '<S12>/Derivative Gain'
-                                        *   '<S13>/Derivative Gain'
-                                        *   '<S14>/Derivative Gain'
+                                        * Referenced by: '<S12>/Derivative Gain'
                                         */
   0.3,                                 /* Variable: DC2y
-                                        * Referenced by:
-                                        *   '<S15>/Derivative Gain'
-                                        *   '<S17>/Derivative Gain'
-                                        *   '<S18>/Derivative Gain'
+                                        * Referenced by: '<S17>/Derivative Gain'
                                         */
-  0.1,                                 /* Variable: IC1x
+  0.4,                                 /* Variable: DC3x
+                                        * Referenced by: '<S13>/Derivative Gain'
+                                        */
+  0.4,                                 /* Variable: DC3y
+                                        * Referenced by: '<S15>/Derivative Gain'
+                                        */
+  0.5,                                 /* Variable: DC4x
+                                        * Referenced by: '<S14>/Derivative Gain'
+                                        */
+  0.5,                                 /* Variable: DC4y
+                                        * Referenced by: '<S18>/Derivative Gain'
+                                        */
+  0.08,                                /* Variable: IC1x
                                         * Referenced by: '<S11>/Integral Gain'
                                         */
-  0.1,                                 /* Variable: IC1y
+  0.08,                                /* Variable: IC1y
                                         * Referenced by: '<S16>/Integral Gain'
                                         */
   0.3,                                 /* Variable: IC2x
-                                        * Referenced by:
-                                        *   '<S12>/Integral Gain'
-                                        *   '<S13>/Integral Gain'
-                                        *   '<S14>/Integral Gain'
+                                        * Referenced by: '<S12>/Integral Gain'
                                         */
   0.3,                                 /* Variable: IC2y
-                                        * Referenced by:
-                                        *   '<S15>/Integral Gain'
-                                        *   '<S17>/Integral Gain'
-                                        *   '<S18>/Integral Gain'
+                                        * Referenced by: '<S17>/Integral Gain'
                                         */
-  2.0,                                 /* Variable: PC1x
+  0.4,                                 /* Variable: IC3x
+                                        * Referenced by: '<S13>/Integral Gain'
+                                        */
+  0.4,                                 /* Variable: IC3y
+                                        * Referenced by: '<S15>/Integral Gain'
+                                        */
+  0.6,                                 /* Variable: IC4x
+                                        * Referenced by: '<S14>/Integral Gain'
+                                        */
+  0.6,                                 /* Variable: IC4y
+                                        * Referenced by: '<S18>/Integral Gain'
+                                        */
+  1.2,                                 /* Variable: PC1x
                                         * Referenced by: '<S11>/Proportional Gain'
                                         */
-  2.0,                                 /* Variable: PC1y
+  1.2,                                 /* Variable: PC1y
                                         * Referenced by: '<S16>/Proportional Gain'
                                         */
-  3.5,                                 /* Variable: PC2x
-                                        * Referenced by:
-                                        *   '<S12>/Proportional Gain'
-                                        *   '<S13>/Proportional Gain'
-                                        *   '<S14>/Proportional Gain'
+  2.0,                                 /* Variable: PC2x
+                                        * Referenced by: '<S12>/Proportional Gain'
                                         */
-  3.5,                                 /* Variable: PC2y
-                                        * Referenced by:
-                                        *   '<S15>/Proportional Gain'
-                                        *   '<S17>/Proportional Gain'
-                                        *   '<S18>/Proportional Gain'
+  2.0,                                 /* Variable: PC2y
+                                        * Referenced by: '<S17>/Proportional Gain'
+                                        */
+  2.5,                                 /* Variable: PC3x
+                                        * Referenced by: '<S13>/Proportional Gain'
+                                        */
+  2.5,                                 /* Variable: PC3y
+                                        * Referenced by: '<S15>/Proportional Gain'
+                                        */
+  2.7,                                 /* Variable: PC4x
+                                        * Referenced by: '<S14>/Proportional Gain'
+                                        */
+  2.7,                                 /* Variable: PC4y
+                                        * Referenced by: '<S18>/Proportional Gain'
                                         */
 
   /*  Variable: waypoints
    * Referenced by: '<Root>/Constant'
    */
-  { 0.0, 13.0, 23.0, 25.0, 22.0, 22.0, 37.0, 37.0, 38.0, 0.0, 13.0, 13.0, 11.0,
-    14.0, 20.0, 35.0, 36.0, 37.0, 26.0, 26.0, 27.0, 26.0, 27.0, 27.0, 27.0, 27.0,
-    27.0, 9.0, 9.0, 12.0, 9.0, 12.0, 12.0, 12.0, 12.0, 12.0, 0.0, 0.0, 0.0, 1.0,
+  { 0.0, 6.0, 9.0, 12.0, 15.0, 16.0, 17.0, 19.0, 27.0, 35.0, 43.0, 44.0, 37.0,
+    35.0, 34.0, 30.0, 26.0, 9.0, 8.0, 7.0, 0.0, 0.0, 3.0, 3.0, 6.0, 6.0, 7.0,
+    7.0, 15.0, 7.0, 7.0, 8.0, 7.0, 9.0, 9.0, 13.0, 13.0, 30.0, 30.0, 31.0, 46.0,
+    46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0, 46.0,
+    46.0, 46.0, 46.0, 24.0, 24.0, 24.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0,
+    10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 10.0, 46.0, 46.0, 46.0,
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0,
     0.0, 0.0, 0.0, 0.0, 1.0 },
 
   /*  Variable: xRange

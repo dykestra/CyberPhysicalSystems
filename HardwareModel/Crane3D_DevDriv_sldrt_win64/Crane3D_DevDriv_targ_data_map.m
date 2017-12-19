@@ -28,8 +28,8 @@
     ;%
     ;% Auto data (Crane3D_DevDriv_P)
     ;%
-      section.nData     = 89;
-      section.data(89)  = dumData; %prealloc
+      section.nData     = 101;
+      section.data(101)  = dumData; %prealloc
       
 	  ;% Crane3D_DevDriv_P.DC1x
 	  section.data(1).logicalSrcIdx = 0;
@@ -47,345 +47,393 @@
 	  section.data(4).logicalSrcIdx = 3;
 	  section.data(4).dtTransOffset = 3;
 	
-	  ;% Crane3D_DevDriv_P.IC1x
+	  ;% Crane3D_DevDriv_P.DC3x
 	  section.data(5).logicalSrcIdx = 4;
 	  section.data(5).dtTransOffset = 4;
 	
-	  ;% Crane3D_DevDriv_P.IC1y
+	  ;% Crane3D_DevDriv_P.DC3y
 	  section.data(6).logicalSrcIdx = 5;
 	  section.data(6).dtTransOffset = 5;
 	
-	  ;% Crane3D_DevDriv_P.IC2x
+	  ;% Crane3D_DevDriv_P.DC4x
 	  section.data(7).logicalSrcIdx = 6;
 	  section.data(7).dtTransOffset = 6;
 	
-	  ;% Crane3D_DevDriv_P.IC2y
+	  ;% Crane3D_DevDriv_P.DC4y
 	  section.data(8).logicalSrcIdx = 7;
 	  section.data(8).dtTransOffset = 7;
 	
-	  ;% Crane3D_DevDriv_P.PC1x
+	  ;% Crane3D_DevDriv_P.IC1x
 	  section.data(9).logicalSrcIdx = 8;
 	  section.data(9).dtTransOffset = 8;
 	
-	  ;% Crane3D_DevDriv_P.PC1y
+	  ;% Crane3D_DevDriv_P.IC1y
 	  section.data(10).logicalSrcIdx = 9;
 	  section.data(10).dtTransOffset = 9;
 	
-	  ;% Crane3D_DevDriv_P.PC2x
+	  ;% Crane3D_DevDriv_P.IC2x
 	  section.data(11).logicalSrcIdx = 10;
 	  section.data(11).dtTransOffset = 10;
 	
-	  ;% Crane3D_DevDriv_P.PC2y
+	  ;% Crane3D_DevDriv_P.IC2y
 	  section.data(12).logicalSrcIdx = 11;
 	  section.data(12).dtTransOffset = 11;
 	
-	  ;% Crane3D_DevDriv_P.waypoints
+	  ;% Crane3D_DevDriv_P.IC3x
 	  section.data(13).logicalSrcIdx = 12;
 	  section.data(13).dtTransOffset = 12;
 	
-	  ;% Crane3D_DevDriv_P.xRange
+	  ;% Crane3D_DevDriv_P.IC3y
 	  section.data(14).logicalSrcIdx = 13;
-	  section.data(14).dtTransOffset = 57;
+	  section.data(14).dtTransOffset = 13;
+	
+	  ;% Crane3D_DevDriv_P.IC4x
+	  section.data(15).logicalSrcIdx = 14;
+	  section.data(15).dtTransOffset = 14;
+	
+	  ;% Crane3D_DevDriv_P.IC4y
+	  section.data(16).logicalSrcIdx = 15;
+	  section.data(16).dtTransOffset = 15;
+	
+	  ;% Crane3D_DevDriv_P.PC1x
+	  section.data(17).logicalSrcIdx = 16;
+	  section.data(17).dtTransOffset = 16;
+	
+	  ;% Crane3D_DevDriv_P.PC1y
+	  section.data(18).logicalSrcIdx = 17;
+	  section.data(18).dtTransOffset = 17;
+	
+	  ;% Crane3D_DevDriv_P.PC2x
+	  section.data(19).logicalSrcIdx = 18;
+	  section.data(19).dtTransOffset = 18;
+	
+	  ;% Crane3D_DevDriv_P.PC2y
+	  section.data(20).logicalSrcIdx = 19;
+	  section.data(20).dtTransOffset = 19;
+	
+	  ;% Crane3D_DevDriv_P.PC3x
+	  section.data(21).logicalSrcIdx = 20;
+	  section.data(21).dtTransOffset = 20;
+	
+	  ;% Crane3D_DevDriv_P.PC3y
+	  section.data(22).logicalSrcIdx = 21;
+	  section.data(22).dtTransOffset = 21;
+	
+	  ;% Crane3D_DevDriv_P.PC4x
+	  section.data(23).logicalSrcIdx = 22;
+	  section.data(23).dtTransOffset = 22;
+	
+	  ;% Crane3D_DevDriv_P.PC4y
+	  section.data(24).logicalSrcIdx = 23;
+	  section.data(24).dtTransOffset = 23;
+	
+	  ;% Crane3D_DevDriv_P.waypoints
+	  section.data(25).logicalSrcIdx = 24;
+	  section.data(25).dtTransOffset = 24;
+	
+	  ;% Crane3D_DevDriv_P.xRange
+	  section.data(26).logicalSrcIdx = 25;
+	  section.data(26).dtTransOffset = 124;
 	
 	  ;% Crane3D_DevDriv_P.yRange
-	  section.data(15).logicalSrcIdx = 14;
-	  section.data(15).dtTransOffset = 59;
+	  section.data(27).logicalSrcIdx = 26;
+	  section.data(27).dtTransOffset = 126;
 	
 	  ;% Crane3D_DevDriv_P.PIDController_N
-	  section.data(16).logicalSrcIdx = 15;
-	  section.data(16).dtTransOffset = 61;
+	  section.data(28).logicalSrcIdx = 27;
+	  section.data(28).dtTransOffset = 128;
 	
 	  ;% Crane3D_DevDriv_P.PIDController1_N
-	  section.data(17).logicalSrcIdx = 16;
-	  section.data(17).dtTransOffset = 62;
+	  section.data(29).logicalSrcIdx = 28;
+	  section.data(29).dtTransOffset = 129;
 	
 	  ;% Crane3D_DevDriv_P.PIDController2_N
-	  section.data(18).logicalSrcIdx = 17;
-	  section.data(18).dtTransOffset = 63;
+	  section.data(30).logicalSrcIdx = 29;
+	  section.data(30).dtTransOffset = 130;
 	
 	  ;% Crane3D_DevDriv_P.PIDController3_N
-	  section.data(19).logicalSrcIdx = 18;
-	  section.data(19).dtTransOffset = 64;
+	  section.data(31).logicalSrcIdx = 30;
+	  section.data(31).dtTransOffset = 131;
 	
 	  ;% Crane3D_DevDriv_P.PIDController5_N
-	  section.data(20).logicalSrcIdx = 19;
-	  section.data(20).dtTransOffset = 65;
+	  section.data(32).logicalSrcIdx = 31;
+	  section.data(32).dtTransOffset = 132;
 	
 	  ;% Crane3D_DevDriv_P.PIDController6_N
-	  section.data(21).logicalSrcIdx = 20;
-	  section.data(21).dtTransOffset = 66;
+	  section.data(33).logicalSrcIdx = 32;
+	  section.data(33).dtTransOffset = 133;
 	
 	  ;% Crane3D_DevDriv_P.PIDController4_N
-	  section.data(22).logicalSrcIdx = 21;
-	  section.data(22).dtTransOffset = 67;
+	  section.data(34).logicalSrcIdx = 33;
+	  section.data(34).dtTransOffset = 134;
 	
 	  ;% Crane3D_DevDriv_P.PIDController7_N
-	  section.data(23).logicalSrcIdx = 22;
-	  section.data(23).dtTransOffset = 68;
+	  section.data(35).logicalSrcIdx = 34;
+	  section.data(35).dtTransOffset = 135;
 	
 	  ;% Crane3D_DevDriv_P.Encoder_P1_Size
-	  section.data(24).logicalSrcIdx = 23;
-	  section.data(24).dtTransOffset = 69;
+	  section.data(36).logicalSrcIdx = 35;
+	  section.data(36).dtTransOffset = 136;
 	
 	  ;% Crane3D_DevDriv_P.Encoder_P1
-	  section.data(25).logicalSrcIdx = 24;
-	  section.data(25).dtTransOffset = 71;
+	  section.data(37).logicalSrcIdx = 36;
+	  section.data(37).dtTransOffset = 138;
 	
 	  ;% Crane3D_DevDriv_P.Encoder_P2_Size
-	  section.data(26).logicalSrcIdx = 25;
-	  section.data(26).dtTransOffset = 72;
+	  section.data(38).logicalSrcIdx = 37;
+	  section.data(38).dtTransOffset = 139;
 	
 	  ;% Crane3D_DevDriv_P.Encoder_P2
-	  section.data(27).logicalSrcIdx = 26;
-	  section.data(27).dtTransOffset = 74;
+	  section.data(39).logicalSrcIdx = 38;
+	  section.data(39).dtTransOffset = 141;
 	
 	  ;% Crane3D_DevDriv_P.Encoder500PPR_Gain
-	  section.data(28).logicalSrcIdx = 27;
-	  section.data(28).dtTransOffset = 75;
+	  section.data(40).logicalSrcIdx = 39;
+	  section.data(40).dtTransOffset = 142;
 	
 	  ;% Crane3D_DevDriv_P.XScale_Gain
-	  section.data(29).logicalSrcIdx = 28;
-	  section.data(29).dtTransOffset = 76;
+	  section.data(41).logicalSrcIdx = 40;
+	  section.data(41).dtTransOffset = 143;
 	
 	  ;% Crane3D_DevDriv_P.YScale_Gain
-	  section.data(30).logicalSrcIdx = 29;
-	  section.data(30).dtTransOffset = 77;
+	  section.data(42).logicalSrcIdx = 41;
+	  section.data(42).dtTransOffset = 144;
 	
 	  ;% Crane3D_DevDriv_P.XAngleScale_Gain
-	  section.data(31).logicalSrcIdx = 30;
-	  section.data(31).dtTransOffset = 78;
+	  section.data(43).logicalSrcIdx = 42;
+	  section.data(43).dtTransOffset = 145;
 	
 	  ;% Crane3D_DevDriv_P.YAngleScale_Gain
-	  section.data(32).logicalSrcIdx = 31;
-	  section.data(32).dtTransOffset = 79;
+	  section.data(44).logicalSrcIdx = 43;
+	  section.data(44).dtTransOffset = 146;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC
-	  section.data(33).logicalSrcIdx = 32;
-	  section.data(33).dtTransOffset = 80;
+	  section.data(45).logicalSrcIdx = 44;
+	  section.data(45).dtTransOffset = 147;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC
-	  section.data(34).logicalSrcIdx = 33;
-	  section.data(34).dtTransOffset = 81;
+	  section.data(46).logicalSrcIdx = 45;
+	  section.data(46).dtTransOffset = 148;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_a
-	  section.data(35).logicalSrcIdx = 34;
-	  section.data(35).dtTransOffset = 82;
+	  section.data(47).logicalSrcIdx = 46;
+	  section.data(47).dtTransOffset = 149;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_j
-	  section.data(36).logicalSrcIdx = 35;
-	  section.data(36).dtTransOffset = 83;
+	  section.data(48).logicalSrcIdx = 47;
+	  section.data(48).dtTransOffset = 150;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_f
-	  section.data(37).logicalSrcIdx = 36;
-	  section.data(37).dtTransOffset = 84;
+	  section.data(49).logicalSrcIdx = 48;
+	  section.data(49).dtTransOffset = 151;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_m
-	  section.data(38).logicalSrcIdx = 37;
-	  section.data(38).dtTransOffset = 85;
+	  section.data(50).logicalSrcIdx = 49;
+	  section.data(50).dtTransOffset = 152;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_h
-	  section.data(39).logicalSrcIdx = 38;
-	  section.data(39).dtTransOffset = 86;
+	  section.data(51).logicalSrcIdx = 50;
+	  section.data(51).dtTransOffset = 153;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_o
-	  section.data(40).logicalSrcIdx = 39;
-	  section.data(40).dtTransOffset = 87;
+	  section.data(52).logicalSrcIdx = 51;
+	  section.data(52).dtTransOffset = 154;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_c
-	  section.data(41).logicalSrcIdx = 40;
-	  section.data(41).dtTransOffset = 88;
+	  section.data(53).logicalSrcIdx = 52;
+	  section.data(53).dtTransOffset = 155;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_a
-	  section.data(42).logicalSrcIdx = 41;
-	  section.data(42).dtTransOffset = 89;
+	  section.data(54).logicalSrcIdx = 53;
+	  section.data(54).dtTransOffset = 156;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_fc
-	  section.data(43).logicalSrcIdx = 42;
-	  section.data(43).dtTransOffset = 90;
+	  section.data(55).logicalSrcIdx = 54;
+	  section.data(55).dtTransOffset = 157;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_c
-	  section.data(44).logicalSrcIdx = 43;
-	  section.data(44).dtTransOffset = 91;
+	  section.data(56).logicalSrcIdx = 55;
+	  section.data(56).dtTransOffset = 158;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_cx
-	  section.data(45).logicalSrcIdx = 44;
-	  section.data(45).dtTransOffset = 92;
+	  section.data(57).logicalSrcIdx = 56;
+	  section.data(57).dtTransOffset = 159;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_or
-	  section.data(46).logicalSrcIdx = 45;
-	  section.data(46).dtTransOffset = 93;
+	  section.data(58).logicalSrcIdx = 57;
+	  section.data(58).dtTransOffset = 160;
 	
 	  ;% Crane3D_DevDriv_P.Integrator_IC_a2
-	  section.data(47).logicalSrcIdx = 46;
-	  section.data(47).dtTransOffset = 94;
+	  section.data(59).logicalSrcIdx = 58;
+	  section.data(59).dtTransOffset = 161;
 	
 	  ;% Crane3D_DevDriv_P.Filter_IC_ms
-	  section.data(48).logicalSrcIdx = 47;
-	  section.data(48).dtTransOffset = 95;
+	  section.data(60).logicalSrcIdx = 59;
+	  section.data(60).dtTransOffset = 162;
 	
 	  ;% Crane3D_DevDriv_P.Constant_Value
-	  section.data(49).logicalSrcIdx = 48;
-	  section.data(49).dtTransOffset = 96;
+	  section.data(61).logicalSrcIdx = 60;
+	  section.data(61).dtTransOffset = 163;
 	
 	  ;% Crane3D_DevDriv_P.PWM_P1_Size
-	  section.data(50).logicalSrcIdx = 49;
-	  section.data(50).dtTransOffset = 97;
+	  section.data(62).logicalSrcIdx = 61;
+	  section.data(62).dtTransOffset = 164;
 	
 	  ;% Crane3D_DevDriv_P.PWM_P1
-	  section.data(51).logicalSrcIdx = 50;
-	  section.data(51).dtTransOffset = 99;
+	  section.data(63).logicalSrcIdx = 62;
+	  section.data(63).dtTransOffset = 166;
 	
 	  ;% Crane3D_DevDriv_P.PWM_P2_Size
-	  section.data(52).logicalSrcIdx = 51;
-	  section.data(52).dtTransOffset = 100;
+	  section.data(64).logicalSrcIdx = 63;
+	  section.data(64).dtTransOffset = 167;
 	
 	  ;% Crane3D_DevDriv_P.PWM_P2
-	  section.data(53).logicalSrcIdx = 52;
-	  section.data(53).dtTransOffset = 102;
+	  section.data(65).logicalSrcIdx = 64;
+	  section.data(65).dtTransOffset = 169;
 	
 	  ;% Crane3D_DevDriv_P.Saturation_UpperSat
-	  section.data(54).logicalSrcIdx = 53;
-	  section.data(54).dtTransOffset = 103;
+	  section.data(66).logicalSrcIdx = 65;
+	  section.data(66).dtTransOffset = 170;
 	
 	  ;% Crane3D_DevDriv_P.Saturation_LowerSat
-	  section.data(55).logicalSrcIdx = 54;
-	  section.data(55).dtTransOffset = 104;
+	  section.data(67).logicalSrcIdx = 66;
+	  section.data(67).dtTransOffset = 171;
 	
 	  ;% Crane3D_DevDriv_P.LimitFlag_P1_Size
-	  section.data(56).logicalSrcIdx = 55;
-	  section.data(56).dtTransOffset = 105;
+	  section.data(68).logicalSrcIdx = 67;
+	  section.data(68).dtTransOffset = 172;
 	
 	  ;% Crane3D_DevDriv_P.LimitFlag_P1
-	  section.data(57).logicalSrcIdx = 56;
-	  section.data(57).dtTransOffset = 107;
+	  section.data(69).logicalSrcIdx = 68;
+	  section.data(69).dtTransOffset = 174;
 	
 	  ;% Crane3D_DevDriv_P.LimitFlag_P2_Size
-	  section.data(58).logicalSrcIdx = 57;
-	  section.data(58).dtTransOffset = 108;
+	  section.data(70).logicalSrcIdx = 69;
+	  section.data(70).dtTransOffset = 175;
 	
 	  ;% Crane3D_DevDriv_P.LimitFlag_P2
-	  section.data(59).logicalSrcIdx = 58;
-	  section.data(59).dtTransOffset = 110;
+	  section.data(71).logicalSrcIdx = 70;
+	  section.data(71).dtTransOffset = 177;
 	
 	  ;% Crane3D_DevDriv_P.LimitFlagSource_Value
-	  section.data(60).logicalSrcIdx = 59;
-	  section.data(60).dtTransOffset = 111;
+	  section.data(72).logicalSrcIdx = 71;
+	  section.data(72).dtTransOffset = 178;
 	
 	  ;% Crane3D_DevDriv_P.LimitSource_Value
-	  section.data(61).logicalSrcIdx = 60;
-	  section.data(61).dtTransOffset = 114;
+	  section.data(73).logicalSrcIdx = 72;
+	  section.data(73).dtTransOffset = 181;
 	
 	  ;% Crane3D_DevDriv_P.SetLimit_P1_Size
-	  section.data(62).logicalSrcIdx = 61;
-	  section.data(62).dtTransOffset = 117;
+	  section.data(74).logicalSrcIdx = 73;
+	  section.data(74).dtTransOffset = 184;
 	
 	  ;% Crane3D_DevDriv_P.SetLimit_P1
-	  section.data(63).logicalSrcIdx = 62;
-	  section.data(63).dtTransOffset = 119;
+	  section.data(75).logicalSrcIdx = 74;
+	  section.data(75).dtTransOffset = 186;
 	
 	  ;% Crane3D_DevDriv_P.SetLimit_P2_Size
-	  section.data(64).logicalSrcIdx = 63;
-	  section.data(64).dtTransOffset = 120;
+	  section.data(76).logicalSrcIdx = 75;
+	  section.data(76).dtTransOffset = 187;
 	
 	  ;% Crane3D_DevDriv_P.SetLimit_P2
-	  section.data(65).logicalSrcIdx = 64;
-	  section.data(65).dtTransOffset = 122;
+	  section.data(77).logicalSrcIdx = 76;
+	  section.data(77).dtTransOffset = 189;
 	
 	  ;% Crane3D_DevDriv_P.LimitSwitch_P1_Size
-	  section.data(66).logicalSrcIdx = 65;
-	  section.data(66).dtTransOffset = 123;
+	  section.data(78).logicalSrcIdx = 77;
+	  section.data(78).dtTransOffset = 190;
 	
 	  ;% Crane3D_DevDriv_P.LimitSwitch_P1
-	  section.data(67).logicalSrcIdx = 66;
-	  section.data(67).dtTransOffset = 125;
+	  section.data(79).logicalSrcIdx = 78;
+	  section.data(79).dtTransOffset = 192;
 	
 	  ;% Crane3D_DevDriv_P.LimitSwitch_P2_Size
-	  section.data(68).logicalSrcIdx = 67;
-	  section.data(68).dtTransOffset = 126;
+	  section.data(80).logicalSrcIdx = 79;
+	  section.data(80).dtTransOffset = 193;
 	
 	  ;% Crane3D_DevDriv_P.LimitSwitch_P2
-	  section.data(69).logicalSrcIdx = 68;
-	  section.data(69).dtTransOffset = 128;
+	  section.data(81).logicalSrcIdx = 80;
+	  section.data(81).dtTransOffset = 195;
 	
 	  ;% Crane3D_DevDriv_P.PWMPrescaler_P1_Size
-	  section.data(70).logicalSrcIdx = 69;
-	  section.data(70).dtTransOffset = 129;
+	  section.data(82).logicalSrcIdx = 81;
+	  section.data(82).dtTransOffset = 196;
 	
 	  ;% Crane3D_DevDriv_P.PWMPrescaler_P1
-	  section.data(71).logicalSrcIdx = 70;
-	  section.data(71).dtTransOffset = 131;
+	  section.data(83).logicalSrcIdx = 82;
+	  section.data(83).dtTransOffset = 198;
 	
 	  ;% Crane3D_DevDriv_P.PWMPrescaler_P2_Size
-	  section.data(72).logicalSrcIdx = 71;
-	  section.data(72).dtTransOffset = 132;
+	  section.data(84).logicalSrcIdx = 83;
+	  section.data(84).dtTransOffset = 199;
 	
 	  ;% Crane3D_DevDriv_P.PWMPrescaler_P2
-	  section.data(73).logicalSrcIdx = 72;
-	  section.data(73).dtTransOffset = 134;
+	  section.data(85).logicalSrcIdx = 84;
+	  section.data(85).dtTransOffset = 201;
 	
 	  ;% Crane3D_DevDriv_P.PWMPrescalerSource_Value
-	  section.data(74).logicalSrcIdx = 73;
-	  section.data(74).dtTransOffset = 135;
+	  section.data(86).logicalSrcIdx = 85;
+	  section.data(86).dtTransOffset = 202;
 	
 	  ;% Crane3D_DevDriv_P.ResetEncoder_P1_Size
-	  section.data(75).logicalSrcIdx = 74;
-	  section.data(75).dtTransOffset = 136;
+	  section.data(87).logicalSrcIdx = 86;
+	  section.data(87).dtTransOffset = 203;
 	
 	  ;% Crane3D_DevDriv_P.ResetEncoder_P1
-	  section.data(76).logicalSrcIdx = 75;
-	  section.data(76).dtTransOffset = 138;
+	  section.data(88).logicalSrcIdx = 87;
+	  section.data(88).dtTransOffset = 205;
 	
 	  ;% Crane3D_DevDriv_P.ResetEncoder_P2_Size
-	  section.data(77).logicalSrcIdx = 76;
-	  section.data(77).dtTransOffset = 139;
+	  section.data(89).logicalSrcIdx = 88;
+	  section.data(89).dtTransOffset = 206;
 	
 	  ;% Crane3D_DevDriv_P.ResetEncoder_P2
-	  section.data(78).logicalSrcIdx = 77;
-	  section.data(78).dtTransOffset = 141;
+	  section.data(90).logicalSrcIdx = 89;
+	  section.data(90).dtTransOffset = 208;
 	
 	  ;% Crane3D_DevDriv_P.ResetSource_Value
-	  section.data(79).logicalSrcIdx = 78;
-	  section.data(79).dtTransOffset = 142;
+	  section.data(91).logicalSrcIdx = 90;
+	  section.data(91).dtTransOffset = 209;
 	
 	  ;% Crane3D_DevDriv_P.ResetSwitchFlag_P1_Size
-	  section.data(80).logicalSrcIdx = 79;
-	  section.data(80).dtTransOffset = 147;
+	  section.data(92).logicalSrcIdx = 91;
+	  section.data(92).dtTransOffset = 214;
 	
 	  ;% Crane3D_DevDriv_P.ResetSwitchFlag_P1
-	  section.data(81).logicalSrcIdx = 80;
-	  section.data(81).dtTransOffset = 149;
+	  section.data(93).logicalSrcIdx = 92;
+	  section.data(93).dtTransOffset = 216;
 	
 	  ;% Crane3D_DevDriv_P.ResetSwitchFlag_P2_Size
-	  section.data(82).logicalSrcIdx = 81;
-	  section.data(82).dtTransOffset = 150;
+	  section.data(94).logicalSrcIdx = 93;
+	  section.data(94).dtTransOffset = 217;
 	
 	  ;% Crane3D_DevDriv_P.ResetSwitchFlag_P2
-	  section.data(83).logicalSrcIdx = 82;
-	  section.data(83).dtTransOffset = 152;
+	  section.data(95).logicalSrcIdx = 94;
+	  section.data(95).dtTransOffset = 219;
 	
 	  ;% Crane3D_DevDriv_P.ResetSwitchFlagSource_Value
-	  section.data(84).logicalSrcIdx = 83;
-	  section.data(84).dtTransOffset = 153;
+	  section.data(96).logicalSrcIdx = 95;
+	  section.data(96).dtTransOffset = 220;
 	
 	  ;% Crane3D_DevDriv_P.ThermFlag_P1_Size
-	  section.data(85).logicalSrcIdx = 84;
-	  section.data(85).dtTransOffset = 156;
+	  section.data(97).logicalSrcIdx = 96;
+	  section.data(97).dtTransOffset = 223;
 	
 	  ;% Crane3D_DevDriv_P.ThermFlag_P1
-	  section.data(86).logicalSrcIdx = 85;
-	  section.data(86).dtTransOffset = 158;
+	  section.data(98).logicalSrcIdx = 97;
+	  section.data(98).dtTransOffset = 225;
 	
 	  ;% Crane3D_DevDriv_P.ThermFlag_P2_Size
-	  section.data(87).logicalSrcIdx = 86;
-	  section.data(87).dtTransOffset = 159;
+	  section.data(99).logicalSrcIdx = 98;
+	  section.data(99).dtTransOffset = 226;
 	
 	  ;% Crane3D_DevDriv_P.ThermFlag_P2
-	  section.data(88).logicalSrcIdx = 87;
-	  section.data(88).dtTransOffset = 161;
+	  section.data(100).logicalSrcIdx = 99;
+	  section.data(100).dtTransOffset = 228;
 	
 	  ;% Crane3D_DevDriv_P.ThermFlagSource_Value
-	  section.data(89).logicalSrcIdx = 88;
-	  section.data(89).dtTransOffset = 162;
+	  section.data(101).logicalSrcIdx = 100;
+	  section.data(101).dtTransOffset = 229;
 	
       nTotData = nTotData + section.nData;
       paramMap.sections(1) = section;
@@ -860,8 +908,8 @@
   ;%
 
 
-  targMap.checksum0 = 3412237169;
-  targMap.checksum1 = 210214119;
-  targMap.checksum2 = 1411798281;
-  targMap.checksum3 = 3613856210;
+  targMap.checksum0 = 2457036737;
+  targMap.checksum1 = 1691281498;
+  targMap.checksum2 = 3289858025;
+  targMap.checksum3 = 1057960823;
 

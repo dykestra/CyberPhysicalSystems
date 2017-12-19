@@ -158,7 +158,7 @@ REQ_INCLUDES := $(MATLAB_ROOT)/simulink/include;$(MATLAB_ROOT)/extern/include;$(
 REQ_INCLUDES += ;$(MATLAB_ROOT)/toolbox/shared/can/src/scanutil;$(SLDRTDIR)/src
 
 # additional includes
-REQ_INCLUDES += ;$(MATLAB_ROOT)/simulink/include/sf_runtime;H:/downloads/CPS/CyberPhysicalSystems-master/CyberPhysicalSystems-master/HardwareModel/Crane3D_DevDriv_sldrt_win64;H:/downloads/CPS/CyberPhysicalSystems-master/CyberPhysicalSystems-master/HardwareModel;$(MATLAB_ROOT)/rtw/c/src/ext_mode/common
+REQ_INCLUDES += ;$(MATLAB_ROOT)/simulink/include/sf_runtime;H:/repos/CyberPhysicalSystems/HardwareModel/Crane3D_DevDriv_sldrt_win64;H:/repos/CyberPhysicalSystems/HardwareModel;$(MATLAB_ROOT)/rtw/c/src/ext_mode/common
 
 # shared includes
 ifneq ($(SHARED_SRC_DIR),)
