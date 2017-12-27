@@ -6,7 +6,7 @@ clc
 NUM_TARGETS = 3;
 NUM_OBSTACLES = 100;
 NUMBER_OF_SIMULATIONS = 50;
-montecarlo_function(NUM_TARGETS,NUM_OBSTACLES,NUMBER_OF_SIMULATIONS);
+montecarlo_function(NUM_TARGETS,NUM_OBSTACLES,NUMBER_OF_SIMULATIONS,1);
 
 %% Loop around all files
 %directory = strcat('Verification/PathPlanningTest/Input/',int2str(NUM_TARGETS));

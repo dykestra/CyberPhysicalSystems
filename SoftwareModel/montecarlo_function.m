@@ -1,4 +1,4 @@
-function [] = montecarlo_function( num_targets, num_obstacles, courses )
+function [] = montecarlo_function( num_targets, num_obstacles, courses, VERIFICATION )
 
     % PARAMETERS to guide creation:
     min_dist_ot = 0;%    - min distance between targets and obstacles:  min_dist_ot
@@ -18,14 +18,22 @@ function [] = montecarlo_function( num_targets, num_obstacles, courses )
     COURSES = courses; % NUMBER OF COURSES TO CREATE
     for i=1:COURSES
         % Setup a filename for the scenario
-        filename = 'Verification/PathPlanningTest/Input/scenario_';
-        filename = strcat(filename,int2str(num_targets));
-        filename = strcat(filename,'_');
-        filename = strcat(filename,int2str(num_obstacles));
-        filename = strcat(filename,'_');
-        scen_num = int2str(i);
-        filename = strcat(filename,scen_num);
-        filename = strcat(filename,'.csv');
+        if VERIFICATION~=1
+            filename = 'MontecarloScenarios/Input/scenario';
+            scen_num = int2str(i);
+            filename = strcat(filename,scen_num);
+            filename = strcat(filename,'.csv');
+        else % if VERIFICATION==1
+            % Setup a filename for the scenario
+            filename = 'Verification/PathPlanningTest/Input/scenario_';
+            filename = strcat(filename,int2str(num_targets));
+            filename = strcat(filename,'_');
+            filename = strcat(filename,int2str(num_obstacles));
+            filename = strcat(filename,'_');
+            scen_num = int2str(i);
+            filename = strcat(filename,scen_num);
+            filename = strcat(filename,'.csv');
+        end
         % If a file with the name already exists, delete it (otherwise append
         % will keep appending to the end of it!)
         if exist(char(filename),'file')
