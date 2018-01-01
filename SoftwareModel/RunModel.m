@@ -1,5 +1,5 @@
 function RunModel(InputFile,OutputPath, Model)
-% Suppress warnings relating to inputs and outputs not connected
+%% Suppress warnings relating to inputs and outputs not connected
 warning('off','Simulink:Engine:InputNotConnected');
 warning('off','Simulink:Engine:OutputNotConnected');
 
@@ -115,7 +115,9 @@ score = getScore(simout_b, obstacles_csv, targets_csv, ElapsedTimePP)
 PostSimAnalysis(OutputPath, MAP, waypoints, TrajX, TrajY, CartX, CartY, CartdX, CartdY, AngleX, AngleY, AngledX, AngledY, simout.get('xRange'), simout.get('yRange'), simout.get('DesiredX'), simout.get('DesiredY'));
 
 %% Save all information as csv and print figures
-csvwrite('Results.csv', [TrajX, TrajY(:,2), CartX(:,2), CartY(:,2), CartdX(:,2), CartdY(:,2), AngleX(:,2), AngleY(:,2), AngledX(:,2), AngledY(:,2)]);
+%csvwrite('Results.csv', [TrajX, TrajY(:,2), CartX(:,2), CartY(:,2), CartdX(:,2), CartdY(:,2), AngleX(:,2), AngleY(:,2), AngledX(:,2), AngledY(:,2)]);
+output_data = strcat(OutputPath,'/Results.csv');
+csvwrite(char(output_data), [simout_b.TrajX, simout_b.TrajY(:,2), simout_b.CartX(:,2), simout_b.CartY(:,2), simout_b.AngleX(:,2), simout_b.AngleY(:,2), simout_b.DesX(:,2), simout_b.DesY(:,2)]);
 
 % Switch warnings relating to inputs and outputs not connected back on
 warning('on','Simulink:Engine:InputNotConnected');

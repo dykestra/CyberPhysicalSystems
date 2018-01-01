@@ -11,7 +11,8 @@ clc
 
 clear variables 
 
-ModelName = 'Simscape_crane_software_model_NPNC_2016a';%'Simscape_crane_software_model_RealSensors_R2016b';
+ModelName = 'Simscape_crane_software_model_2Contr';
+%ModelName = 'Simscape_crane_software_model_NPNC_2016a';%'Simscape_crane_software_model_RealSensors_R2016b';
 %ModelName = 'Simscape_crane_software_model_SingleContr_R2016b';%'Simscape_crane_software_model_RealSensors_R2016b';
 %ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
 
@@ -23,9 +24,10 @@ for file = files'
     %Split = strsplit(string(file.name), '.');
     %OutputPath = strcat('MontecarloScenarios/Output/' + Split(1));
     InputPath = strcat(FOLDER,file.name); %2016a
-    fname = file.name
-    Split = strsplit(char(fname),'.') %2016a
-    OutputPath = strcat('MontecarloScenarios/Output/',Split(1)) %2016a
+    fname = file.name;
+    Token = strtok(char(fname),'.'); %2016a
+    OutputPath = strcat('MontecarloScenarios/Output/3/',Token) %2016a
+    
     RunModel(InputPath, OutputPath, ModelName)
     
     % Switch off the Mechanics editor opening for later scenarios
