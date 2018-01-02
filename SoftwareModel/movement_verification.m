@@ -77,12 +77,13 @@ end
 % Function to create a given test course
 % -------------------------------------------
 function [] = test_course(filename,start_x,start_y,end_x,end_y)
-    
-    % Write the starting point to the file
-    line = [start_x start_y 1];
-    dlmwrite(filename,line,'delimiter',',','-append');
-
-    % Write the ending point to the file
-    line = [end_x end_y 1];
-    dlmwrite(filename,line,'delimiter',',','-append');
+    if exist(filename, 'file') ~= 2
+        % Write the starting point to the file
+        line = [start_x start_y 1];
+        dlmwrite(filename,line,'delimiter',',','-append');
+        
+        % Write the ending point to the file
+        line = [end_x end_y 1];
+        dlmwrite(filename,line,'delimiter',',','-append');
+    end
 end

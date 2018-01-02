@@ -7,8 +7,10 @@ end
 
 len = size(path,1);
 waypoints = []; %size of waypoints unknown until completion
-prev_dir = path(2,:) - path(1,:); % last direction [xdir, ydir]
-prev_point = path(2,:);
+if len > 1 %FIX - errors appeared when len was 1 and path(2,:) called
+    prev_dir = path(2,:) - path(1,:); % last direction [xdir, ydir]
+    prev_point = path(2,:);
+end
 
 for i=3:len
     next_point = path(i,:);

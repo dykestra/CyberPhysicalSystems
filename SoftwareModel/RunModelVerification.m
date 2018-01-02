@@ -16,7 +16,6 @@ MAP = txt2Map(InputFile);
 targets = waypoints(waypoints(:,5)==1,:); %getting the actual targets only
 
 ElapsedTimePP = toc
-
 %% Define PIDs parameters for model
 PTraj = 3.0;
 ITraj = 0.3;
@@ -26,7 +25,7 @@ POsc = 0.9;
 IOsc = 0;
 DOsc = 0.01;
 
-% PARAMETERS ADDED FROM LATEST CONTROLLER WITH HW MODEL
+% PARAMETERS ADDED FROM PREV CONTROLLER WITH HW MODEL
 PC1x = 2.0;
 IC1x = 0.1;
 DC1x = 0.3;
@@ -42,6 +41,48 @@ DC1y = 0.3;
 PC2y = 3.5;
 IC2y = 0.3;
 DC2y = 0.3;
+
+
+%LATEST 2Controller version
+PC1x = 4.7;
+IC1x = 0.9;
+DC1x = 0.1;
+
+% PC2x = 3.0;
+% IC2x = 0.1;
+% DC2x = 0.3;
+% 
+% PC3x = 3.5;
+% IC3x = 0.2;
+% DC3x = 0.4;
+% 
+% PC4x = 3.7;
+% IC4x = 0.3;
+% DC4x = 0.5;
+% 
+PC1y = PC1x;
+IC1y = IC1x;
+DC1y = DC1x;
+% 
+% PC2y = PC2x;
+% IC2y = IC2x;
+% DC2y = DC2x;
+% 
+% PC3y = PC3x;
+% IC3y = IC3x;
+% DC3y = DC3x;
+% 
+% PC4y = PC4x;
+% IC4y = IC4x;
+% DC4y = DC4x;
+
+AnglePX = 2.0;
+AngleIX = 0;
+AngleDX = 0;
+
+AnglePY = AnglePX;
+AngleIY = AngleIX;
+AngleDY = AngleDX;
 
 %% Run Model
 options = simset('SrcWorkspace','current','ReturnWorkspaceOutputs','on');

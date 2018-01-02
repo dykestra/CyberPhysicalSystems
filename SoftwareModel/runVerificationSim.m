@@ -6,29 +6,31 @@ clc
 % Delete old ones
 files = dir('Verification/Input/*.csv');
 for file = files'
-    delete(char( strcat(string(file.folder) + '/' + string(file.name)) ))
+    %delete(char( strcat(string(file.folder) + '/' + string(file.name)) ))
+    delete(char( strcat('Verification/Input/',file.name) ))
 end
 files = dir('Verification/Output/*.jpg');
 for file = files'
-    delete(char( strcat(string(file.folder) + '/' + string(file.name)) ))
+    delete(char( strcat('Verification/Output/',file.name) ))
 end
 
 % Create files
-movement_verification;
+%movement_verification;
+filepath = 'Verification/Input/scenario';
+movement_verification(filepath);
 clear variables 
 
-%ModelName = 'Simscape_crane_software_model_SingleContr_R2016b';%'Simscape_crane_software_model_RealSensors_R2016b';
-ModelName = 'Simscape_crane_software_model_RealSensors_R2016b';
-orig_stop_time = '180';%get_param(ModelName, 'StopTime');
+ModelName = 'Simscape_crane_software_model_2Contr';
+orig_stop_time = get_param(ModelName, 'StopTime');
 set_param(ModelName, 'StopTime', '80');
 
 
 %% Loop around all files
 files = dir('Verification/Input/*.csv');
 for file = files'
-    InputPath = strcat(string(file.folder) + '/' + string(file.name));
-    Split = strsplit(string(file.name), '.');
-    OutputPath = strcat('Verification/Output/' + Split(1));
+    InputPath = strcat('Verification/Input/',file.name);
+    Token = strtok(file.name,'.'); %2016a
+    OutputPath = strcat('Verification/Output/',Token);
     display(file.name)
     RunModelVerification(InputPath, OutputPath, ModelName)
     
