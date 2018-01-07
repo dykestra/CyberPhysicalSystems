@@ -1,4 +1,7 @@
 function RunModelVerification(InputFile,OutputPath, Model)
+% Flipped path (for "frm" runs)
+FLIP = 1
+
 % Suppress warnings relating to inputs and outputs not connected
 warning('off','Simulink:Engine:InputNotConnected');
 warning('off','Simulink:Engine:OutputNotConnected');
@@ -9,11 +12,19 @@ warning('off','Simulink:Engine:OutputNotConnected');
 %% Load Variables and perform Path Planning
 tic;
 
-run('setup.m');
+%run('setup.m');
+setup;
 MAP = txt2Map(InputFile);
 %[targets,waypoints] = path_planning(MAP);
 [waypoints] = path_planning(MAP);
-targets = waypoints(waypoints(:,5)==1,:); %getting the actual targets only
+if FLIP == 1
+    if waypoints(end,1) > 7 && waypoints(end,2) > 7
+        waypoints(2,1) = 7;
+        waypoints(2,2) = 7;
+    end
+    waypoints = flipud(waypoints); % flipping
+end
+targets = waypoints(waypoints(:,5)==1,:) %getting the actual targets only
 
 ElapsedTimePP = toc
 %% Define PIDs parameters for model
