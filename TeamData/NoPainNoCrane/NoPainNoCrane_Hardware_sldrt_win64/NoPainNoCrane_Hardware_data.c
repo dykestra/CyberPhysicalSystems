@@ -7,9 +7,9 @@
  *
  * Code generation for model "NoPainNoCrane_Hardware".
  *
- * Model version              : 1.269
+ * Model version              : 1.270
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Wed Jan 10 15:10:38 2018
+ * C source code generated on : Wed Jan 10 18:15:55 2018
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -106,9 +106,11 @@ P_NoPainNoCrane_Hardware_T NoPainNoCrane_Hardware_P = {
   /*  Expression: waypoints
    * Referenced by: '<Root>/Constant'
    */
-  { 0.0, 1.0, 4.0, 16.0, 20.0, 20.0, 0.0, 2.0, 5.0, 6.0, 10.0, 20.0, 10.0, 10.0,
-    10.0, 10.0, 10.0, 10.0, 2.0, 2.0, 2.0, 2.0, 10.0, 10.0, 0.0, 0.0, 1.0, 0.0,
-    1.0, 1.0 },
+  { 0.0, 0.0, 9.0, 9.0, 10.0, 6.0, 4.0, 8.0, 19.0, 20.0, 20.0, 0.0, 21.0, 30.0,
+    31.0, 32.0, 32.0, 34.0, 38.0, 38.0, 37.0, 36.0, 5.0, 5.0, 17.0, 17.0, 17.0,
+    17.0, 17.0, 17.0, 17.0, 17.0, 17.0, 15.0, 15.0, 34.0, 34.0, 34.0, 34.0, 34.0,
+    34.0, 34.0, 34.0, 34.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 0.0,
+    1.0 },
 
   /*  Expression: [0.26 0.32 0.3  0 0]
    * Referenced by: '<S4>/Unit Delay'

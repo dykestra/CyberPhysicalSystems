@@ -7,9 +7,9 @@
  *
  * Code generation for model "NoPainNoCrane_Hardware".
  *
- * Model version              : 1.269
+ * Model version              : 1.270
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Wed Jan 10 15:10:38 2018
+ * C source code generated on : Wed Jan 10 18:15:55 2018
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -75,7 +75,7 @@ static DataTypeTransitionTable rtBTransTable = {
 
 /* data type transitions for Parameters structure */
 static DataTypeTransition rtPTransitions[] = {
-  { (char_T *)(&NoPainNoCrane_Hardware_P.PIDController_D), 0, 0, 147 }
+  { (char_T *)(&NoPainNoCrane_Hardware_P.PIDController_D), 0, 0, 172 }
 };
 
 /* data type transition table for Parameters structure */

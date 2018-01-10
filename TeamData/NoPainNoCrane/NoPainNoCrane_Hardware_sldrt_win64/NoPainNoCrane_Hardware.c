@@ -7,9 +7,9 @@
  *
  * Code generation for model "NoPainNoCrane_Hardware".
  *
- * Model version              : 1.269
+ * Model version              : 1.270
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Wed Jan 10 15:10:38 2018
+ * C source code generated on : Wed Jan 10 18:15:55 2018
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -274,7 +274,7 @@ void NoPainNoCrane_Hardware_output(void)
 
     /* '<S5>:1:11' */
     rtb_stop = 0.0;
-    if (NoPainNoCrane_Hardware_DW.WP_Index <= 6.0) {
+    if (NoPainNoCrane_Hardware_DW.WP_Index <= 11.0) {
       /* '<S5>:1:12' */
       /* '<S5>:1:13' */
       x = NoPainNoCrane_Hardware_P.Constant_Value[(int32_T)
@@ -282,7 +282,7 @@ void NoPainNoCrane_Hardware_output(void)
 
       /* '<S5>:1:14' */
       y = NoPainNoCrane_Hardware_P.Constant_Value[(int32_T)
-        NoPainNoCrane_Hardware_DW.WP_Index + 5] / 100.0;
+        NoPainNoCrane_Hardware_DW.WP_Index + 10] / 100.0;
 
       /*     %% Establish boundary conditions and controller class */
       /* '<S5>:1:17' */
@@ -297,7 +297,7 @@ void NoPainNoCrane_Hardware_output(void)
       /* '<S5>:1:20' */
       y_min = y - 0.02;
       if (NoPainNoCrane_Hardware_P.Constant_Value[(int32_T)
-          NoPainNoCrane_Hardware_DW.WP_Index + 23] == 1.0) {
+          NoPainNoCrane_Hardware_DW.WP_Index + 43] == 1.0) {
         /* '<S5>:1:22' */
         /* '<S5>:1:23' */
         x_max = x + 0.01;
@@ -320,7 +320,7 @@ void NoPainNoCrane_Hardware_output(void)
         /* '<S5>:1:31' */
         /* '<S5>:1:32' */
         NoPainNoCrane_Hardware_DW.WP_Index++;
-        if (NoPainNoCrane_Hardware_DW.WP_Index > 6.0) {
+        if (NoPainNoCrane_Hardware_DW.WP_Index > 11.0) {
           /* '<S5>:1:33' */
           /* '<S5>:1:34' */
           NoPainNoCrane_Hardware_DW.WP_Index--;
@@ -510,7 +510,9 @@ void NoPainNoCrane_Hardware_output(void)
 
   /* MATLAB Function 'Controller/Enforce Soft Limits and Overflow': '<S6>:1' */
   /* '<S6>:1:3' */
+  /* 0.08; */
   /* '<S6>:1:4' */
+  /* 0.08; */
   /* '<S6>:1:5' */
   y_max = x_max;
 
@@ -533,14 +535,14 @@ void NoPainNoCrane_Hardware_output(void)
   }
 
   /*  Put in place soft boundaries on the borders */
-  if ((x > NoPainNoCrane_Hardware_P.X_range_Value[1] - 0.08) && (!(x_max <= 0.0)))
+  if ((x > NoPainNoCrane_Hardware_P.X_range_Value[1] - 0.02) && (!(x_max <= 0.0)))
   {
     /* '<S6>:1:17' */
     /* '<S6>:1:18' */
     y_max = 0.0;
   }
 
-  if (x < NoPainNoCrane_Hardware_P.X_range_Value[0] + 0.08) {
+  if (x < NoPainNoCrane_Hardware_P.X_range_Value[0] + 0.02) {
     /* '<S6>:1:21' */
     /* '<S6>:1:22' */
     if (x_max >= 0.0) {
@@ -550,14 +552,14 @@ void NoPainNoCrane_Hardware_output(void)
     }
   }
 
-  if ((y > NoPainNoCrane_Hardware_P.Y_range_Value[1] - 0.08) && (!(x_min <= 0.0)))
+  if ((y > NoPainNoCrane_Hardware_P.Y_range_Value[1] - 0.02) && (!(x_min <= 0.0)))
   {
     /* '<S6>:1:26' */
     /* '<S6>:1:27' */
     y_min = 0.0;
   }
 
-  if (y < NoPainNoCrane_Hardware_P.Y_range_Value[0] + 0.08) {
+  if (y < NoPainNoCrane_Hardware_P.Y_range_Value[0] + 0.02) {
     /* '<S6>:1:30' */
     /* '<S6>:1:31' */
     if (x_min >= 0.0) {
@@ -1137,15 +1139,15 @@ RT_MODEL_NoPainNoCrane_Hardware_T *NoPainNoCrane_Hardware(void)
     NoPainNoCrane_Hardware_M->Timing.sampleHits = (&mdlSampleHits[0]);
   }
 
-  rtmSetTFinal(NoPainNoCrane_Hardware_M, 59.79);
+  rtmSetTFinal(NoPainNoCrane_Hardware_M, 599.61);
   NoPainNoCrane_Hardware_M->Timing.stepSize0 = 0.01;
   NoPainNoCrane_Hardware_M->Timing.stepSize1 = 0.01;
 
   /* External mode info */
-  NoPainNoCrane_Hardware_M->Sizes.checksums[0] = (2744582875U);
-  NoPainNoCrane_Hardware_M->Sizes.checksums[1] = (726568948U);
-  NoPainNoCrane_Hardware_M->Sizes.checksums[2] = (401154565U);
-  NoPainNoCrane_Hardware_M->Sizes.checksums[3] = (2310163723U);
+  NoPainNoCrane_Hardware_M->Sizes.checksums[0] = (1009234173U);
+  NoPainNoCrane_Hardware_M->Sizes.checksums[1] = (2657560476U);
+  NoPainNoCrane_Hardware_M->Sizes.checksums[2] = (946982847U);
+  NoPainNoCrane_Hardware_M->Sizes.checksums[3] = (4268637782U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
@@ -2442,7 +2444,7 @@ RT_MODEL_NoPainNoCrane_Hardware_T *NoPainNoCrane_Hardware(void)
   NoPainNoCrane_Hardware_M->Sizes.numSampTimes = (2);/* Number of sample times */
   NoPainNoCrane_Hardware_M->Sizes.numBlocks = (88);/* Number of blocks */
   NoPainNoCrane_Hardware_M->Sizes.numBlockIO = (44);/* Number of block outputs */
-  NoPainNoCrane_Hardware_M->Sizes.numBlockPrms = (147);/* Sum of parameter "widths" */
+  NoPainNoCrane_Hardware_M->Sizes.numBlockPrms = (172);/* Sum of parameter "widths" */
   return NoPainNoCrane_Hardware_M;
 }
 

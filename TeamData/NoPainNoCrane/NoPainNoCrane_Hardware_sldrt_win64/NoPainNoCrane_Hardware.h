@@ -7,9 +7,9 @@
  *
  * Code generation for model "NoPainNoCrane_Hardware".
  *
- * Model version              : 1.269
+ * Model version              : 1.270
  * Simulink Coder version : 8.10 (R2016a) 10-Feb-2016
- * C source code generated on : Wed Jan 10 15:10:38 2018
+ * C source code generated on : Wed Jan 10 18:15:55 2018
  *
  * Target selection: sldrt.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -1042,7 +1042,7 @@ struct P_NoPainNoCrane_Hardware_T_ {
   real_T YAngleScale_Gain;             /* Expression: Crane3D_ScaleCoeff( 5 )
                                         * Referenced by: '<S3>/Y Angle Scale'
                                         */
-  real_T Constant_Value[30];           /* Expression: waypoints
+  real_T Constant_Value[55];           /* Expression: waypoints
                                         * Referenced by: '<Root>/Constant'
                                         */
   real_T UnitDelay_InitialCondition[5];/* Expression: [0.26 0.32 0.3  0 0]
