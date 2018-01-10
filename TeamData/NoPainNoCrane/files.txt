@@ -1,0 +1,22 @@
+This directory contains all files for a specific team's controller.
+
+simSetup.m - The setup routine
+	This function is run before the simulation is started. Any variables that your simulation
+	needs should be declared in the function. The last action of the function is 
+	to save the function's workspace for use by the simulation.
+
+Hardware Model - The Simulink model that runs the hardware system
+	This model must have the words "Hardware" somewhere in the name, with a file
+	extension of .slx or .mdl (in version R2016a format).
+	The state8 signal vector should be connected to a ToWorkspace block saving
+	to a variable by the name of "yout" with the format "structure with time".
+
+Software Model - The Simulink model that runs the software simulation
+	This model must have the words "Software" somewhere in the name, with a file
+	extension of .slx or .mdl (in version R2016a format).
+	The state8 vector should be connected to an output block with the name "output".
+	The model should be configured (inside the "Data Import/Export" pane of the configuration
+	window) to save the output as yout as a "Structure with time).
+
+Other files can be included in this folder if they are needed by your setup script
+or simulation. This directory will be on the path when the simulation is run.
